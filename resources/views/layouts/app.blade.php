@@ -6,6 +6,7 @@
         @vite([
             'resources/css/app.css',
             'resources/css/header.css',
+            'resources/css/footer.css',
             ])
     </head>
     <body>
