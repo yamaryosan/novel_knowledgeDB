@@ -15,10 +15,10 @@ use App\Http\Controllers\TriviaController;
 |
 */
 
-// ランディングページ
+// 偽ランディングページ
 Route::get('/', [PseudoPageController::class, 'index']);
 // 秘密の呪文入力判定
 Route::post('/secret', [PseudoPageController::class, 'post'])->name('secret');
 
 // 職場閲覧モードランディングページ
-Route::get('/work', [TriviaController::class, 'index'])->name('index');
+Route::get('/index', [TriviaController::class, 'index'])->name('index');
