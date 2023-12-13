@@ -1,6 +1,7 @@
 <div class="sidebar">
     <div class="search">
-        <form action="#" method="get">
+        <form action={{ route('secret') }} method="post">
+            @csrf
             <input type="text" name="keyword" placeholder="example" value="">
             <input type="submit" value="検索">
         </form>

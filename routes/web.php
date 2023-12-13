@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PseudoPageController;
+use App\Http\Controllers\TriviaController;
 
 /*
 |--------------------------------------------------------------------------
@@ -16,3 +17,8 @@ use App\Http\Controllers\PseudoPageController;
 
 // ランディングページ
 Route::get('/', [PseudoPageController::class, 'index']);
+// 秘密の呪文入力判定
+Route::post('/secret', [PseudoPageController::class, 'post'])->name('secret');
+
+// ランディングページ
+Route::get('/work', [TriviaController::class, 'index'])->name('index');
