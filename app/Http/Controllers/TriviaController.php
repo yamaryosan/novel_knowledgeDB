@@ -11,8 +11,6 @@ class TriviaController extends Controller
     // ランディングページを表示
     public function index()
     {
-        // データが取り出せるか確認してみる
-        $trivia = Trivium::all();
-        dd($trivia);
+        return view('trivia.index');
     }
 }
