@@ -20,5 +20,5 @@ Route::get('/', [PseudoPageController::class, 'index']);
 // 秘密の呪文入力判定
 Route::post('/secret', [PseudoPageController::class, 'post'])->name('secret');
 
-// ランディングページ
+// 職場閲覧モードランディングページ
 Route::get('/work', [TriviaController::class, 'index'])->name('index');
