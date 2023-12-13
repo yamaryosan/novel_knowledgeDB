@@ -7,13 +7,17 @@
             'resources/css/app.css',
             'resources/css/header.css',
             'resources/css/footer.css',
+            'resources/css/content.css',
+            'resources/css/sidebar.css',
             ])
     </head>
     <body>
         @include('layouts.header')
         <main>
-            <h2>タイトル(仮)</h2>
-            <p>本文(仮)</p>
+            <div class="content">
+                @yield('content')
+            </div>
+            @include('layouts.sidebar')
         </main>
         @include('layouts.footer')
     </body>
