@@ -14,5 +14,5 @@ use App\Http\Controllers\PseudoPageController;
 |
 */
 
-// 職場閲覧モードランディングページ
+// ランディングページ
 Route::get('/', [PseudoPageController::class, 'index']);
