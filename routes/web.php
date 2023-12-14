@@ -2,7 +2,8 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PseudoPageController;
-use App\Http\Controllers\TriviaController;
+use App\Http\Controllers\WorkspaceModeController;
+use App\Http\Controllers\HomeModeController;
 
 /*
 |--------------------------------------------------------------------------
@@ -15,10 +16,18 @@ use App\Http\Controllers\TriviaController;
 |
 */
 
-// ランディングページ
-Route::get('/', [PseudoPageController::class, 'index']);
+// 偽ページ
+Route::get('/', [PseudoPageController::class, 'top'])->name('top');
+Route::get('/recommend', [PseudoPageController::class, 'recommend'])->name('recommend');
+Route::get('/new_article', [PseudoPageController::class, 'new_article'])->name('new_article');
+Route::get('/category', [PseudoPageController::class, 'category'])->name('category');
+
 // 秘密の呪文入力判定
 Route::post('/secret', [PseudoPageController::class, 'post'])->name('secret');
 
-// 職場閲覧モードランディングページ
-Route::get('/work', [TriviaController::class, 'index'])->name('index');
+// 職場閲覧モード
+Route::get('/index', [WorkspaceModeController::class, 'index'])->name('index');
+Route::get('/session', [WorkspaceModeController::class, 'session'])->name('session');
+
+// 自宅閲覧モード
+Route::get('/home', [HomeModeController::class, 'index'])->name('home');
