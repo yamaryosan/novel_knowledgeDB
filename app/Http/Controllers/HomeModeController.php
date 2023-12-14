@@ -6,5 +6,8 @@ use Illuminate\Http\Request;
 
 class HomeModeController extends Controller
 {
-    //
+    public function index()
+    {
+        return view('home_mode.index');
+    }
 }

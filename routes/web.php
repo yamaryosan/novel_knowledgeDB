@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PseudoPageController;
 use App\Http\Controllers\WorkspaceModeController;
+use App\Http\Controllers\HomeModeController;
 
 /*
 |--------------------------------------------------------------------------
@@ -27,3 +28,6 @@ Route::post('/secret', [PseudoPageController::class, 'post'])->name('secret');
 // 職場閲覧モード
 Route::get('/index', [WorkspaceModeController::class, 'index'])->name('index');
 Route::get('/session', [WorkspaceModeController::class, 'session'])->name('session');
+
+// 自宅閲覧モード
+Route::get('/home', [WorkspaceModeController::class, 'index'])->name('home');
