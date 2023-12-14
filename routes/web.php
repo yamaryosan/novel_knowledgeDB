@@ -15,10 +15,17 @@ use App\Http\Controllers\TriviaController;
 |
 */
 
-// 偽ランディングページ
-Route::get('/', [PseudoPageController::class, 'index']);
+// 偽ページ
+Route::get('/', [PseudoPageController::class, 'top'])->name('top');
+Route::get('/recommend', [PseudoPageController::class, 'recommend'])->name('recommend');
+Route::get('/new_article', [PseudoPageController::class, 'new_article'])->name('new_article');
+Route::get('/category', [PseudoPageController::class, 'category'])->name('category');
+
 // 秘密の呪文入力判定
 Route::post('/secret', [PseudoPageController::class, 'post'])->name('secret');
 
-// 職場閲覧モードランディングページ
+// 職場閲覧モード
 Route::get('/index', [TriviaController::class, 'index'])->name('index');
+
+// 自宅閲覧モードランディングページ
+Route::get('/s', [TriviaController::class, 'index'])->name('s');

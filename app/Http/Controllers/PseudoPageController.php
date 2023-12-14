@@ -7,7 +7,22 @@ use Illuminate\Http\Request;
 class PseudoPageController extends Controller
 {
     // 偽ランディングページを表示
-    public function index()
+    public function top()
+    {
+        return view('pseudo_page.index');
+    }
+
+    public function recommend()
+    {
+        return view('pseudo_page.index');
+    }
+
+    public function new_article()
+    {
+        return view('pseudo_page.index');
+    }
+
+    public function category()
     {
         return view('pseudo_page.index');
     }
