@@ -1,1 +1,5 @@
-<p>自宅閲覧モード</p>
+<h2>自宅閲覧モード</h2>
+
+@component('components.search_window')
+
+@endcomponent
