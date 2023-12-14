@@ -19,16 +19,16 @@ class TrackNavigationMiddleware
         $currentRoute = $request->path();
 
         // セッションにナビゲーション履歴があれば取得、なければ初期化
-        if(!$request->session()->has('navigation_history')){
-            session(['navigation_history' => []]);
+        if(!$request->session()->get('navigation_history')){
+            $request->session()->put('navigation_history', []);
         }
 
         // セッションにナビゲーション履歴を追加
-        $history = session('navigation_history');
+        $history = $request->session()->get('navigation_history');
         $history[] = $currentRoute;
 
         // セッションにナビゲーション履歴を保存
-        session(['navigation_history' => $history]);
+        $request->session()->put('navigation_history', $history);
 
         return $next($request);
     }
