@@ -24,7 +24,7 @@ class CheckNavigationPattern
         // 履歴が特定のパターンに一致するかチェック
         if($this->isValidPattern($history)) {
             // 一致したら自宅閲覧モードのランディングページに遷移
-            return redirect()->route('s');
+            return redirect()->route('home');
         }
 
         return $next($request);

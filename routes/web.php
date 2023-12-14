@@ -30,4 +30,4 @@ Route::get('/index', [WorkspaceModeController::class, 'index'])->name('index');
 Route::get('/session', [WorkspaceModeController::class, 'session'])->name('session');
 
 // 自宅閲覧モード
-Route::get('/home', [WorkspaceModeController::class, 'index'])->name('home');
+Route::get('/home', [HomeModeController::class, 'index'])->name('home');
