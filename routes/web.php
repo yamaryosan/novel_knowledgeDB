@@ -2,7 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PseudoPageController;
-use App\Http\Controllers\TriviaController;
+use App\Http\Controllers\WorkspaceModeController;
 
 /*
 |--------------------------------------------------------------------------
@@ -25,7 +25,4 @@ Route::get('/category', [PseudoPageController::class, 'category'])->name('catego
 Route::post('/secret', [PseudoPageController::class, 'post'])->name('secret');
 
 // 職場閲覧モード
-Route::get('/index', [TriviaController::class, 'index'])->name('index');
-
-// 自宅閲覧モードランディングページ
-Route::get('/s', [TriviaController::class, 'index'])->name('s');
+Route::get('/index', [WorkspaceModeController::class, 'index'])->name('index');
