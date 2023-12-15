@@ -16,6 +16,7 @@ return new class extends Migration
             $table->string('title', 255)->comment('タイトル');
             $table->text('summary')->comment('総論');
             $table->text('detail')->comment('詳細');
+            $table->timestamps();
         });
     }
 
