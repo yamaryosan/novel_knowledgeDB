@@ -5,7 +5,7 @@
         <title>タイトル(仮)</title>
         @vite([
             'resources/css/app.css',
-            'resources/css/home_mode.css',
+            'resources/css/home_mode/home_mode.css',
             ])
     </head>
     <body>
