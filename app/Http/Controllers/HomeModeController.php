@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
+use App\Models\Trivium;
+
 class HomeModeController extends Controller
 {
     public function index()
@@ -31,9 +33,16 @@ class HomeModeController extends Controller
     {
         // キーワードを取得
         $keyword = $request->input('keyword');
+
+        // キーワードを含む項目を取得
+        $trivia = Trivium::where('title', 'like', '%'.$keyword.'%')->get();
+
+        dd($trivia);
+
         // 検索キーワードをビューに渡す
         return view('home_mode.result', [
             'keyword' => $keyword,
+            'trivia' => $trivia,
         ]);
     }
 }
