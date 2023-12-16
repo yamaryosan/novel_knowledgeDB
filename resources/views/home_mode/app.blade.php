@@ -7,6 +7,7 @@
             'resources/css/app.css',
             'resources/css/home_mode/home_mode.css',
             'resources/css/home_mode/search_window.css',
+            'resources/css/home_mode/import_export.css',
             ])
     </head>
     <body>

@@ -12,6 +12,12 @@
 
 <h2>統計情報</h2>
 
-<h2>インポート・エクスポート</h2>
+@component('components.import')
+
+@endcomponent
+
+@component('components.export')
+
+@endcomponent
 
 @endsection
