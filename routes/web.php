@@ -31,3 +31,5 @@ Route::get('/session', [WorkspaceModeController::class, 'session'])->name('sessi
 
 // 自宅閲覧モード
 Route::get('/home', [HomeModeController::class, 'index'])->name('home');
+Route::post('/search', [HomeModeController::class, 'post'])->name('search');
+Route::get('/search', [HomeModeController::class, 'result'])->name('result');

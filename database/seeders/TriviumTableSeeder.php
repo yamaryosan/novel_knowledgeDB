@@ -18,6 +18,8 @@ class TriviumTableSeeder extends Seeder
             'title' => 'タイトル1',
             'summary' => '総論1',
             'detail' => '詳細1',
+            'created_at' => '2021-01-01 00:00:00',
+            'updated_at' => '2021-01-01 00:00:00',
         ];
         DB::table('trivia')->insert($param);
 
@@ -25,6 +27,8 @@ class TriviumTableSeeder extends Seeder
             'title' => 'タイトル2',
             'summary' => '総論2',
             'detail' => '詳細2',
+            'created_at' => '2021-01-02 00:00:00',
+            'updated_at' => '2021-01-02 00:00:00',
         ];
         DB::table('trivia')->insert($param);
     }
