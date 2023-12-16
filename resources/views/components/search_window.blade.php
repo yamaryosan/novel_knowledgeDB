@@ -2,18 +2,12 @@
 
 <div class="search_window">
     <form action="{{ route('search') }}" method="GET">
-        <div class="search_window_inner_form_input">
-            <input type="text" name="keyword" placeholder="キーワードを入力">
-        </div>
-        <div class="search_window_inner_from_select">
-            <select name="target">
-                <option value="0">Title</option>
-                <option value="1">Detail</option>
-                <option value="2">Both</option>
-            </select>
-        </div>
-        <div class="search_window_inner_form_submit">
-            <input type="submit" value="検索">
-        </div>
+        <select class="target" name="target">
+            <option value="title">Title</option>
+            <option value="detail">Detail</option>
+            <option value="both">Both</option>
+        </select>
+        <input class="input" type="text" name="keyword" placeholder="キーワードを入力">
+        <input class="submit_btn" type="submit" value="検索">
     </form>
 </div>

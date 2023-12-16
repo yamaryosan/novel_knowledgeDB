@@ -1,0 +1,98 @@
+.search_window form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+select {
+    width: 100%;
+    height: 40px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 0 10px;
+    font-size: 1.2rem;
+    margin-bottom: 10px;
+}
+
+input[type="text"] {
+    width: 100%;
+    height: 60px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 0 10px;
+    font-size: 1.2rem;
+    margin-bottom: 10px;
+}
+
+input[type="submit"] {
+    height: 40px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 0 10px;
+    font-size: 1.2rem;
+    margin-bottom: 10px;
+    &:active {
+        background-color: #ccc;
+        border: 1px solid #000;
+    }
+}
+
+@media (min-width: 600px) {
+    .search_window form {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+    }
+
+    select {
+        width: 20%;
+        height: 60px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        padding: 0 10px;
+        font-size: 1.2rem;
+        margin-bottom: 10px;
+        &:focus {
+            outline: none;
+            border: 1px solid #000;
+        }
+    }
+
+    input[type="text"] {
+        width: 70%;
+        height: 60px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        padding: 0 10px;
+        font-size: 1.2rem;
+        margin-bottom: 10px;
+        &:focus {
+            outline: none;
+            border: 1px solid #000;
+        }
+    }
+
+    input[type="submit"] {
+        background-image: url("../../images/search.png");
+        background-size: max(3vw, 25px) max(3vw, 25px);
+        background-repeat: no-repeat;
+        background-position: center;
+        border: none;
+        text-indent: -9999px;
+        overflow: hidden;
+        background-color: transparent;
+        width: 8%;
+        height: 80px;
+        transition: 0.3s;
+        &:hover {
+            cursor: pointer;
+            transform: rotate(5deg);
+            background-size: max(3.5vw, 40px) max(3.5vw, 40px);
+        }
+        &:active {
+            outline: none;
+            border: none;
+        }
+    }
+}

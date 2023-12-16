@@ -6,6 +6,7 @@
         @vite([
             'resources/css/app.css',
             'resources/css/home_mode/home_mode.css',
+            'resources/css/home_mode/search_window.css',
             ])
     </head>
     <body>
