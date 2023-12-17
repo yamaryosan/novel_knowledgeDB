@@ -35,6 +35,13 @@
             animation: none !important;
             background-color: #ade8e6 !important;
         }
+        &.drop {
+            display: flex !important;
+            flex-direction: column !important;
+            align-items: center !important;
+            justify-content: center !important;
+            background-color: #adeb95 !important;
+        }
     }
 
     .import #importFileIcon {
