@@ -6,7 +6,9 @@
 
 @endcomponent
 
-<h2>項目新規作成</h2>
+@component('components.new_addition')
+
+@endcomponent
 
 <h2>ランダム表示</h2>
 
