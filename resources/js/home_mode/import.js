@@ -16,25 +16,55 @@ function setFile() {
     for (const file of inputElement.files) {
         textContent += `${file.name}, `;
     }
+    // 末尾のカンマとスペースを削除
+    textContent = textContent.slice(0, -2);
+
     fileNameElement.textContent = textContent;
     dropAreaElement.appendChild(fileNameElement);
 }
 
 // フォームクリック時の処理
 fileIconElement.addEventListener('click', function() {
+
+    // ファイルが既にアップロードされている場合、ファイルを削除
+    if (inputElement.files.length > 0) {
+        inputElement.value = '';
+    }
+
     inputElement.click();
+
+    // 2度目のクリック時の場合、ファイル名を表示している要素や動的クラスを削除
+    if (dropAreaElement.lastChild) {
+        dropAreaElement.classList.remove('drop');
+        fileIconElement.classList.remove('drop');
+        dropAreaElement.removeChild(dropAreaElement.lastChild);
+    }
 
     // フォームにファイルがセットされるとchangeイベントが発火する
     inputElement.addEventListener('change', setFile);
 });
 
+// キー押下時の処理
 fileIconElement.addEventListener('keydown', (event)=> {
-    if (!fileIconElement.isEqualNode(event.target)) {
-        return;
-    }
 
     if (event.code === 'Space' || event.code === 'Enter') {
+
+        // ファイルが既にアップロードされている場合、ファイルを削除
+        if (inputElement.files.length > 0) {
+            inputElement.value = '';
+        }
+
         inputElement.click();
+
+        // 2度目のクリック時の場合、ファイル名を表示している要素や動的クラスを削除
+        if (dropAreaElement.lastChild) {
+            dropAreaElement.classList.remove('drop');
+            fileIconElement.classList.remove('drop');
+            dropAreaElement.removeChild(dropAreaElement.lastChild);
+        }
+
+        // フォームにファイルがセットされるとchangeイベントが発火する
+        inputElement.addEventListener('change', setFile);
     }
 });
 
@@ -51,6 +81,11 @@ fileIconElement.addEventListener('dragleave', ()=> {
 fileIconElement.addEventListener('drop', (event)=> {
     event.preventDefault();
     fileIconElement.classList.remove('dragover');
+
+    // 2度目のドロップ時の場合、ファイル名を表示している要素を削除
+    if (dropAreaElement.lastChild) {
+        dropAreaElement.removeChild(dropAreaElement.lastChild);
+    }
 
     // ファイルを取得
     const files = event.dataTransfer.files;
