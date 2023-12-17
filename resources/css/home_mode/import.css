@@ -1,0 +1,97 @@
+@media (max-width: 599px) {
+    .import {
+        display: none;
+    }
+}
+
+@media (min-width: 600px) {
+
+    .import .import_form {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        height: 300px;
+        width: 80%;
+        margin: 0 auto;
+    }
+
+    .import .import_file_part {
+        display: none;
+    }
+
+    .import .drop_area {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: space-around;
+        width: 80%;
+        height: 60%;
+        border: 3px dashed #ccc;
+        &:hover, &:focus {
+            border: 3px dashed #999;
+        }
+        .dragover {
+            outline: 3px solid #34e5df !important;
+            animation: none !important;
+            background-color: #ade8e6 !important;
+        }
+    }
+
+    .import #importFileIcon {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+
+        width: 100%;
+        height: 100%;
+
+        background-color: transparent;
+        background-image: url("../../images/upload.png");
+        background-repeat: no-repeat;
+        background-size: min(35%, 45px);
+        background-position: center;
+        text-indent: -9999px;
+        overflow: hidden;
+        border: none;
+        cursor: pointer;
+        animation: slideFade 2.5s infinite ease-in-out;
+    }
+
+    .import .submit_btn {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: center;
+        width: 40%;
+        height: 20%;
+        margin-top: 10px;
+        background-color: #ade8e6;
+        cursor: pointer;
+        box-shadow: 0px 3px #ccc;
+        border-radius: 3px;
+        transition: 0.2s;
+        &:hover {
+            background-color: #65d9d7;
+        }
+        &:active {
+            background-color: #65d9d7;
+            box-shadow: 0 0 #ccc;
+        }
+    }
+
+    @keyframes slideFade {
+        0% {
+            transform: translateY(0px);
+            opacity: 0;
+        }
+        50% {
+            opacity: 1;
+        }
+        100% {
+            transform: translateY(-15px);
+            opacity: 0;
+        }
+    }
+}
