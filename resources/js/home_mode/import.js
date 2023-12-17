@@ -4,19 +4,18 @@ const inputElement = document.getElementById('fileInput');
 
 // フォームにファイルがセットされた時の処理
 function setFile() {
-    // 揺れ動くファイルアイコンの動きを止める
+    // ドラッグオーバー時のスタイルを削除
     fileIconElement.classList.remove('dragover');
+    // ドロップ時のスタイルを適用
     dropAreaElement.classList.add('drop');
     fileIconElement.classList.add('drop');
 
     // ファイル名を表示
     const fileNameElement = document.createElement('p');
-    let textContent = '';
-    console.log(inputElement.files);
+    let textContent = 'アップロード成功: ';
     for (const file of inputElement.files) {
-        textContent += file.name + ' ';
+        textContent += `${file.name}, `;
     }
-    console.log(textContent);
     fileNameElement.textContent = textContent;
     dropAreaElement.appendChild(fileNameElement);
 }
@@ -56,12 +55,10 @@ fileIconElement.addEventListener('drop', (event)=> {
     // ファイルを取得
     const files = event.dataTransfer.files;
 
-    if (files.length === 0) {
-        return;
-    }
-
     const dataTransfer = new DataTransfer();
-    dataTransfer.items.add(files[0]);
+    for (const file of files) {
+        dataTransfer.items.add(file);
+    }
 
     // input要素にファイルをセット
     inputElement.files = dataTransfer.files;
