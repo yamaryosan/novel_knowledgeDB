@@ -5,7 +5,7 @@
         @csrf
         <div class="drop_area">
             <div id="importFileIcon" role="button" tabindex="0">ファイルを選択</div>
-            <input id="fileInput" class="import_file_part" type="file" name="file">
+            <input id="fileInput" class="import_file_part" type="file" name="files[]" multiple>
         </div>
         <input class="submit_btn" type="submit" value="アップロード">
     </form>
