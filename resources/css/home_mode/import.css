@@ -30,18 +30,20 @@
         &:hover, &:focus {
             border: 3px dashed #999;
         }
-        .dragover {
-            outline: 3px solid #34e5df !important;
-            animation: none !important;
-            background-color: #ade8e6 !important;
-        }
-        &.drop {
-            display: flex !important;
-            flex-direction: column !important;
-            align-items: center !important;
-            justify-content: center !important;
-            background-color: #adeb95 !important;
-        }
+    }
+
+    .dragover {
+        outline: 3px solid #34e5df !important;
+        animation: none !important;
+        background-color: #ade8e6 !important;
+    }
+    .drop {
+        display: flex !important;
+        flex-direction: column !important;
+        align-items: center !important;
+        justify-content: center !important;
+        background-color: #adeb95 !important;
+        animation: none !important;
     }
 
     .import #importFileIcon {
