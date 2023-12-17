@@ -34,5 +34,5 @@ Route::get('/home', [HomeModeController::class, 'index'])->name('home');
 Route::post('/search', [HomeModeController::class, 'post'])->name('search');
 Route::get('/search', [HomeModeController::class, 'result'])->name('result');
 Route::post('/import', [HomeModeController::class, 'import'])->name('import');
-Route::post('/post', [HomeModeController::class, 'export'])->name('export');
-Route::post('/new_addition', [HomeModeController::class, 'new_addition'])->name('new_addition');
+Route::post('/export', [HomeModeController::class, 'export'])->name('export');
+Route::post('/store', [HomeModeController::class, 'store'])->name('store');
