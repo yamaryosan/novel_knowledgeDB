@@ -2,15 +2,31 @@ const dropAreaElement = document.querySelector('.drop_area');
 const fileIconElement = document.getElementById('importFileIcon');
 const inputElement = document.getElementById('fileInput');
 
-// ファイル選択時の処理
+// フォームにファイルがセットされた時の処理
+function setFile() {
+    // 揺れ動くファイルアイコンの動きを止める
+    fileIconElement.classList.remove('dragover');
+    dropAreaElement.classList.add('drop');
+    fileIconElement.classList.add('drop');
+
+    // ファイル名を表示
+    const fileNameElement = document.createElement('p');
+    let textContent = '';
+    console.log(inputElement.files);
+    for (const file of inputElement.files) {
+        textContent += file.name + ' ';
+    }
+    console.log(textContent);
+    fileNameElement.textContent = textContent;
+    dropAreaElement.appendChild(fileNameElement);
+}
+
+// フォームクリック時の処理
 fileIconElement.addEventListener('click', function() {
     inputElement.click();
 
-    inputElement.addEventListener('change', ()=> {
-        const fileName = inputElement.files[0].name;
-        dropAreaElement.innerText = `${fileName}を選択中`;
-        dropAreaElement.classList.add('drop');
-    });
+    // フォームにファイルがセットされるとchangeイベントが発火する
+    inputElement.addEventListener('change', setFile);
 });
 
 fileIconElement.addEventListener('keydown', (event)=> {
@@ -36,7 +52,6 @@ fileIconElement.addEventListener('dragleave', ()=> {
 fileIconElement.addEventListener('drop', (event)=> {
     event.preventDefault();
     fileIconElement.classList.remove('dragover');
-    dropAreaElement.classList.add('drop');
 
     // ファイルを取得
     const files = event.dataTransfer.files;
@@ -51,7 +66,6 @@ fileIconElement.addEventListener('drop', (event)=> {
     // input要素にファイルをセット
     inputElement.files = dataTransfer.files;
 
-    // ファイル名を表示
-    const fileName = files[0].name;
-    dropAreaElement.innerText = fileName;
+    // フォームにファイルがセットされるとchangeイベントが発火する
+    setFile();
 });
