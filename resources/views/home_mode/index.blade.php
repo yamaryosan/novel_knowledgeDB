@@ -6,9 +6,7 @@
 
 @endcomponent
 
-@component('components.new_addition')
-
-@endcomponent
+<a href="{{ route('create') }}">新規追加</a>
 
 <h2>ランダム表示</h2>
 

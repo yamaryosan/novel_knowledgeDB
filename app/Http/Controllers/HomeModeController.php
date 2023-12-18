@@ -46,6 +46,12 @@ class HomeModeController extends Controller
         ]);
     }
 
+    // 新規作成ページ
+    public function create()
+    {
+        return view('home_mode.create');
+    }
+
     // 新規作成
     public function store(Request $request)
     {
