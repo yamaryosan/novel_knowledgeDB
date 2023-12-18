@@ -6,6 +6,7 @@
         @vite([
             'resources/css/app.css',
             'resources/css/home_mode/new_addition.css',
+            'resources/js/home_mode/new_addition.js'
             ])
     </head>
     <body>
