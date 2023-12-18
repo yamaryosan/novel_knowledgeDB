@@ -5,8 +5,8 @@
     <p>タイトル</p>
     <input type="text" class="title_input" name="title" required>
     <p>概要</p>
-    <input type="text" class="summary_input" name="summary" required>
+    <textarea class="summary_input" name="summary" cols="20" rows="5"></textarea>
     <p>詳細</p>
-    <input type="text" class="detail_input" name="detail" required>
+    <textarea class="detail_input" name="detail" cols="20" rows="5"></textarea>
     <input type="submit" value="追加" class="submit_btn">
 </form>
