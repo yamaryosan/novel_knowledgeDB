@@ -6,7 +6,7 @@
 
 @endcomponent
 
-<h2>項目新規作成</h2>
+<a href="{{ route('create') }}">新規追加</a>
 
 <h2>ランダム表示</h2>
 

@@ -45,4 +45,33 @@ class HomeModeController extends Controller
             'trivia' => $trivia,
         ]);
     }
+
+    // 新規作成ページ
+    public function create()
+    {
+        return view('home_mode.create');
+    }
+
+    // 新規作成
+    public function store(Request $request)
+    {
+        // バリデーション
+        $request->validate([
+            'title' => 'required|max:255',
+            'summary' => 'required|max:255',
+            'detail' => 'required|max:255',
+        ]);
+
+        // モデルを使って、DBに保存する値をセット
+        $trivium = new Trivium;
+        $trivium->title = $request->title;
+        $trivium->summary = $request->summary;
+        $trivium->detail = $request->detail;
+
+        // DBに保存
+        $trivium->save();
+
+        // トップページにリダイレクト
+        return redirect()->route('home');
+    }
 }

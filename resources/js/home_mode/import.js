@@ -87,16 +87,8 @@ fileIconElement.addEventListener('drop', (event)=> {
         dropAreaElement.removeChild(dropAreaElement.lastChild);
     }
 
-    // ファイルを取得
-    const files = event.dataTransfer.files;
-
-    const dataTransfer = new DataTransfer();
-    for (const file of files) {
-        dataTransfer.items.add(file);
-    }
-
     // input要素にファイルをセット
-    inputElement.files = dataTransfer.files;
+    inputElement.files = event.dataTransfer.files;
 
     // フォームにファイルがセットされるとchangeイベントが発火する
     setFile();

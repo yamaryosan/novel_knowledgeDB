@@ -5,17 +5,14 @@
         <title>タイトル(仮)</title>
         @vite([
             'resources/css/app.css',
-            'resources/css/home_mode/home_mode.css',
-            'resources/css/home_mode/search_window.css',
-            'resources/css/home_mode/import.css',
-            'resources/css/home_mode/export.css',
-            'resources/js/home_mode/import.js',
-
+            'resources/css/home_mode/new_addition.css',
             ])
     </head>
     <body>
         <main>
-            @yield('content')
+            @component('components.new_addition')
+
+            @endcomponent
         </main>
     </body>
 </html>
