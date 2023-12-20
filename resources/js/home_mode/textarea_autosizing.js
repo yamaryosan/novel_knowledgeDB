@@ -4,11 +4,10 @@ function autosizing(className) {
     if (className === undefined) {
         console.error('className is undefined');
     }
-    console.log('autosizing: ' + className);
     const textarea = document.querySelector(`.${className}`);
     textarea.addEventListener('input', function() {
         this.style.height = 'auto';
-        this.style.height = this.scrollHeight + 'px';
+        this.style.height = (this.scrollHeight) + 'px';
     });
 }
 
