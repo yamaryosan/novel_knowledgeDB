@@ -6,7 +6,9 @@
 
 @endcomponent
 
-<a href="{{ route('create') }}">新規追加</a>
+<div class="link_btn_container">
+    <a href="{{ route('create') }}" class="link_btn">新規追加</a>
+</div>
 
 <h2>ランダム表示</h2>
 
