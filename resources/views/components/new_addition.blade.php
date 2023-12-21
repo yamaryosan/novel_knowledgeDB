@@ -16,3 +16,8 @@
     </div>
     <input type="submit" value="追加" class="submit_btn">
 </form>
+
+<!-- スマホ用エラーメッセージ -->
+@component('components.pc_only_message')
+
+@endcomponent
