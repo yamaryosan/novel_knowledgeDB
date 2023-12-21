@@ -63,15 +63,10 @@
             top: 6px;
         }
     }
-    .pc_only_message {
-        display: none;
-    }
 }
+
 @media (max-width: 600px) {
     .new_addition_form {
         display: none;
-    }
-    .pc_only_message {
-        display: block;
     }
 }
