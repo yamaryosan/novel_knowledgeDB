@@ -4,6 +4,7 @@
     justify-content: center;
     margin-top: 10px;
     margin-left: 10%;
+    font-size: 1.5rem;
     .title_input,
     .summary_input,
     .detail_input {
@@ -13,8 +14,10 @@
     }
     .submit_btn {
         width: 80%;
-        height: 50px;
+        height: 100px;
         margin-top: 10px;
         margin-bottom: 10px;
+        font-size: 2rem;
+        background-color: #ade8e6;
     }
 }
