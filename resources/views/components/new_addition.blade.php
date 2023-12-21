@@ -2,11 +2,17 @@
 
 <form action="{{ route('store') }}" class="new_addition_form" method="POST">
     @csrf
-    <p>タイトル</p>
-    <input type="text" class="title_input" name="title" required>
-    <p>概要</p>
-    <input type="text" class="summary_input" name="summary" required>
-    <p>詳細</p>
-    <input type="text" class="detail_input" name="detail" required>
+    <div class="title_container">
+        <p>タイトル</p>
+        <input type="text" class="title_input" name="title" required>
+    </div>
+    <div class="summary_container">
+        <p>概要</p>
+        <textarea name="summary" class="summary_input" cols="20" rows="5" required></textarea>
+    </div>
+    <div class="detail_container">
+        <p>詳細</p>
+        <textarea name="detail" class="detail_input" cols="20" rows="5" required></textarea>
+    </div>
     <input type="submit" value="追加" class="submit_btn">
 </form>
