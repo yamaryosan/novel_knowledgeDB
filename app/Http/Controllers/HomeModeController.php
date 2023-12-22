@@ -74,4 +74,10 @@ class HomeModeController extends Controller
         // トップページにリダイレクト
         return redirect()->route('home');
     }
+
+    // インポート
+    public function import()
+    {
+        return "a";
+    }
 }
