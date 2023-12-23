@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 
 use App\Models\Trivium;
 
+
+
 class HomeModeController extends Controller
 {
     public function index()
@@ -76,8 +78,8 @@ class HomeModeController extends Controller
     }
 
     // インポート
-    public function import()
+    public function import(Request $request)
     {
-        return "a";
+        // ファイルのアップロード
     }
 }
