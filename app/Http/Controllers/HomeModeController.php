@@ -86,7 +86,7 @@ class HomeModeController extends Controller
         // テキストファイル以外はアップロードできないようにする
         if (!$fileService->upload('import', $files)) {
             // エラーを表示
-            return redirect()->route('home')->with('flash_message', 'テキストファイル以外はアップロードできません。');
+            return redirect()->route('home')->with('flash_message', '.txtファイルを選択してください');
         }
     }
 }
