@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 
 use App\Models\Trivium;
 
+use App\Services\FileService;
+
 class HomeModeController extends Controller
 {
     public function index()
@@ -73,5 +75,30 @@ class HomeModeController extends Controller
 
         // トップページにリダイレクト
         return redirect()->route('home');
+    }
+
+    // インポート
+    public function import(Request $request)
+    {
+        // ファイルのアップロード
+        $files = $request->file('files');
+        $fileService = new FileService('import');
+        // テキストファイル以外はエラーを表示
+        if (!$fileService->upload($files)) {
+            return redirect()->route('home')->with('flash_message', '.txtファイルを選択してください');
+        }
+        // 項目の取得
+        $trivia = $fileService->read();
+
+        // 項目をDBに保存
+        foreach ($trivia as $item) {
+            $trivium = new Trivium;
+            $trivium->title = $item['title'];
+            $trivium->summary = $item['summary'];
+            $trivium->detail = $item['detail'];
+            $trivium->save();
+        }
+
+        return redirect()->route('home')->with('flash_message', 'インポートしました');
     }
 }

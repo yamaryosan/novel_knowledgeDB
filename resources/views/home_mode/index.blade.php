@@ -2,6 +2,8 @@
 
 @section('content')
 
+<!-- ここにコンテンツを記述 -->
+
 @component('components.search_window')
 
 @endcomponent
@@ -21,5 +23,11 @@
 @component('components.export')
 
 @endcomponent
+
+@component('components.import_error')
+
+@endcomponent
+
+<!-- ここまで -->
 
 @endsection
