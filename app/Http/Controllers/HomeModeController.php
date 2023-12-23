@@ -82,11 +82,21 @@ class HomeModeController extends Controller
     {
         // ファイルのアップロード
         $files = $request->file('files');
-        $fileService = new FileService;
-        // テキストファイル以外はアップロードできないようにする
-        if (!$fileService->upload('import', $files)) {
-            // エラーを表示
+        $fileService = new FileService('import');
+        // テキストファイル以外はエラーを表示
+        if (!$fileService->upload($files)) {
             return redirect()->route('home')->with('flash_message', '.txtファイルを選択してください');
+        }
+        // 項目の取得
+        $trivia = $fileService->read();
+        dd($trivia[0]);
+        // 項目をDBに保存
+        foreach ($trivia as $item) {
+            $trivium = new Trivium;
+            $trivium->title = $item[0];
+            $trivium->summary = $item[1];
+            $trivium->detail = $item[2];
+            $trivium->save();
         }
     }
 }
