@@ -17,6 +17,7 @@
     background-color: #e8adadc6;
     border: 1px solid #e8adad;
     border-radius: 3px;
+    animation: slideIn 0.5s ease-in-out;
     & img {
         width: 7%;
         margin-right: 2%;
@@ -25,5 +26,32 @@
         font-size: 1.2rem;
         font-weight: bold;
         color: #1f1616;
+    }
+}
+
+.hidden {
+    animation: slideOut 0.5s ease-in-out;
+    animation-fill-mode: forwards;
+}
+
+@keyframes slideIn {
+    0% {
+        opacity: 0;
+        transform: translateY(-100%);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes slideOut {
+    0% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+    100% {
+        opacity: 0;
+        transform: translateY(-100%);
     }
 }
