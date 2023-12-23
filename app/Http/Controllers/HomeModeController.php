@@ -89,14 +89,16 @@ class HomeModeController extends Controller
         }
         // 項目の取得
         $trivia = $fileService->read();
-        dd($trivia[0]);
+
         // 項目をDBに保存
         foreach ($trivia as $item) {
             $trivium = new Trivium;
-            $trivium->title = $item[0];
-            $trivium->summary = $item[1];
-            $trivium->detail = $item[2];
+            $trivium->title = $item['title'];
+            $trivium->summary = $item['summary'];
+            $trivium->detail = $item['detail'];
             $trivium->save();
         }
+
+        return redirect()->route('home')->with('flash_message', 'インポートしました');
     }
 }
