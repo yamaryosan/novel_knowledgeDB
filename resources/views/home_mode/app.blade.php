@@ -10,6 +10,7 @@
             'resources/css/home_mode/import.css',
             'resources/css/home_mode/export.css',
             'resources/css/home_mode/link_btn.css',
+            'resources/css/home_mode/import_error.css',
             'resources/js/home_mode/import.js',
             ])
     </head>
