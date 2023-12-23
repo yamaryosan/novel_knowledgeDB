@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 
 use App\Models\Trivium;
 
-
+use App\Services\FileService;
 
 class HomeModeController extends Controller
 {
@@ -81,5 +81,12 @@ class HomeModeController extends Controller
     public function import(Request $request)
     {
         // ファイルのアップロード
+        $files = $request->file('files');
+        $fileService = new FileService;
+        // テキストファイル以外はアップロードできないようにする
+        if (!$fileService->upload('import', $files)) {
+            // エラーを表示
+            return redirect()->route('home')->with('flash_message', 'テキストファイル以外はアップロードできません。');
+        }
     }
 }
