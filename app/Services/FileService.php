@@ -1,15 +1,27 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Services;
 use Illuminate\Support\Facades\Storage;
 
 class FileService
 {
     // アップロード
-    public function upload(string $path, $file)
+    public function upload(string $path, array $files)
     {
-        // アップロード
-        $path = Storage::putFile('public', $file);
+        foreach ($files as $file) {
+            // ファイル名を取得
+            $filename = $file->getClientOriginalName();
+
+            // テキストファイルかどうかを判定
+            if (!$this->isTextfile($file)) {
+                return false;
+            }
+
+            // ファイルをアップロード
+            Storage::putFileAs($path, $file, $filename);
+        }
     }
 
     // テキストファイルかどうかを判定
