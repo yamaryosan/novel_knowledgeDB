@@ -24,7 +24,7 @@
 
 @endcomponent
 
-@component('components.import_error')
+@component('components.error_message')
 
 @endcomponent
 
