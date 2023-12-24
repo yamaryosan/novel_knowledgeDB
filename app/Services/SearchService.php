@@ -4,12 +4,13 @@ declare(strict_types=1);
 
 namespace App\Services;
 use App\Models\Trivium;
+use Illuminate\Support\Collection;
+use stdClass;
 
 class SearchService
 {
     protected string $keyword = "";
     protected string $target = "";
-    private array $emptyTrivium = ["title" => "DUMMY", "summary" => "DUMMY", "detail" => "DUMMY"];
 
     public function __construct(string $keyword, string $target)
     {
@@ -25,9 +26,18 @@ class SearchService
 
         $this->keyword = $keyword;
         $this->target = $target;
+
+        $this->emptyTrivium = collect();
+        $dummyData = new stdClass();
+        $dummyData->id = 0;
+        $dummyData->title = '検索結果がありません';
+        $dummyData->detail = '検索結果がありません';
+        $dummyData->created_at = '検索結果がありません';
+        $dummyData->updated_at = '検索結果がありません';
+        $this->emptyTrivium->push($dummyData);
     }
 
-    public function search(): array
+    public function search(): Collection
     {
         if ($this->target === 'title') {
             return $this->searchByTitle();
@@ -38,24 +48,24 @@ class SearchService
         }
     }
 
-    public function searchByTitle(): array
+    public function searchByTitle(): Collection
     {
         $trivia = Trivium::where('title', 'like', '%'.$this->keyword.'%')->get();
         // 結果が空の場合はダミーの配列を返す
-        return $trivia->isEmpty() ? $this->emptyTrivium : $trivia->toArray();
+        return $trivia->isEmpty() ? $this->emptyTrivium : $trivia;
     }
 
-    public function searchByDetail(): array
+    public function searchByDetail(): Collection
     {
         $trivia = Trivium::where('detail', 'like', '%'.$this->keyword.'%')->get();
-        return $trivia->isEmpty() ? $this->emptyTrivium : $trivia->toArray();
+        return $trivia->isEmpty() ? $this->emptyTrivium : $trivia;
     }
 
-    public function searchByBoth(): array
+    public function searchByBoth(): Collection
     {
         $trivia = Trivium::where('title', 'like', '%'.$this->keyword.'%')
             ->orWhere('detail', 'like', '%'.$this->keyword.'%')
             ->get();
-        return $trivia->isEmpty() ? $this->emptyTrivium : $trivia->toArray();
+        return $trivia->isEmpty() ? $this->emptyTrivium : $trivia;
     }
 }
