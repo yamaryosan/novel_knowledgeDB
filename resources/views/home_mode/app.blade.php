@@ -13,6 +13,7 @@
             'resources/css/home_mode/import_error.css',
             'resources/js/home_mode/import.js',
             'resources/js/home_mode/import_error.js',
+            'resources/js/home_mode/import_nothing_error.js',
             ])
     </head>
     <body>
