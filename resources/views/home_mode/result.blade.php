@@ -1,20 +1,7 @@
-<h2>検索結果</h2>
-<p>検索キーワード：{{ $keyword }}</p>
+<p>キーワード：{{ $keyword }} (対象: {{ $target }})</p>
+<p> {{ $trivia->count() }}件ヒット </p>
 
 @foreach($trivia as $trivium)
-    <div class="trivium">
-        <div class="item_title">
-            <h3>{{ $trivium->title }}</h3>
-        </div>
-        <div class="item_summary">
-            <p>{{ $trivium->summary }}</p>
-        </div>
-        <div class="item_detail">
-            <p>{{ $trivium->detail }}</p>
-        </div>
-        <div class="item_footer">
-            <p>作成日：{{ $trivium->created_at }}</p>
-            <p>更新日：{{ $trivium->updated_at }}</p>
-        </div>
-    </div>
+    @component('components.article_item', ['trivium' => $trivium])
+    @endcomponent
 @endforeach
