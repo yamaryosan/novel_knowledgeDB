@@ -33,16 +33,18 @@ class HomeModeController extends Controller
     // 検索結果ページ
     public function result(Request $request)
     {
-        // 検索ターゲットを取得
-        $target = $request->input('target');
-
         // キーワードを取得
         $keyword = $request->input('keyword');
 
-        // キーワードを含む項目を取得
-        $trivia = Trivium::where('title', 'like', '%'.$keyword.'%')->get();
+        if (empty($keyword)) {
+            return redirect()->route('home')->with('flash_error_message', 'キーワードを入力してください');
+        }
 
-        dd($trivia);
+        // 検索ターゲットを取得
+        $target = $request->input('target');
+
+        // キーワードを含む項目を取得
+        $trivia = Trivium::where($target, 'like', '%'.$keyword.'%')->get();
 
         // 検索キーワードをビューに渡す
         return view('home_mode.result', [
