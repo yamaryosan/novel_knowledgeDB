@@ -62,6 +62,18 @@ class HomeModeController extends Controller
         ]);
     }
 
+    // 詳細ページ
+    public function show($id)
+    {
+        // IDを元に項目を取得
+        $trivium = Trivium::findOrFail($id);
+
+        // 詳細ページに渡す
+        return view('home_mode.show', [
+            'trivium' => $trivium,
+        ]);
+    }
+
     // 新規作成ページ
     public function create()
     {

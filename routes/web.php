@@ -37,3 +37,4 @@ Route::post('/import', [HomeModeController::class, 'import'])->name('import');
 Route::post('/export', [HomeModeController::class, 'export'])->name('export');
 Route::get('/create', [HomeModeController::class, 'create'])->name('create');
 Route::post('/store', [HomeModeController::class, 'store'])->name('store');
+Route::get('/show/{id}', [HomeModeController::class, 'show'])->name('show');
