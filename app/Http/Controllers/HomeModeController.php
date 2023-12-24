@@ -80,8 +80,11 @@ class HomeModeController extends Controller
     // インポート
     public function import(Request $request)
     {
-        // ファイルのアップロード
         $files = $request->file('files');
+        // ファイルが選択されていなければエラーを表示
+        if (empty($files)) {
+            return redirect()->route('home')->with('flash_message', 'ファイルを選択してください');
+        }
         $fileService = new FileService('import');
         // テキストファイル以外はエラーを表示
         if (!$fileService->upload($files)) {
