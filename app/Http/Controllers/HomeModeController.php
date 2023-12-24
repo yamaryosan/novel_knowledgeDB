@@ -49,7 +49,11 @@ class HomeModeController extends Controller
 
         // キーワードを含む項目を取得
         $searchService = new SearchService($keyword, $target);
-        $trivia = Trivium::where($target, 'like', '%'.$keyword.'%')->get();
+        $trivia = $searchService->search();
+        dd($trivia);
+        if (empty($trivia)) {
+            return redirect()->route('home')->with('flash_error_message', '検索結果がありません');
+        }
 
         // 検索キーワードをビューに渡す
         return view('home_mode.result', [

@@ -9,6 +9,7 @@ class SearchService
 {
     protected string $keyword = "";
     protected string $target = "";
+    private array $emptyTrivium = ["title" => "DUMMY", "summary" => "DUMMY", "detail" => "DUMMY"];
 
     public function __construct(string $keyword, string $target)
     {
@@ -23,6 +24,7 @@ class SearchService
         }
 
         $this->keyword = $keyword;
+        $this->target = $target;
     }
 
     public function search(): array
@@ -39,13 +41,14 @@ class SearchService
     public function searchByTitle(): array
     {
         $trivia = Trivium::where('title', 'like', '%'.$this->keyword.'%')->get();
-        return $trivia;
+        // 結果が空の場合はダミーの配列を返す
+        return $trivia->isEmpty() ? $this->emptyTrivium : $trivia->toArray();
     }
 
     public function searchByDetail(): array
     {
         $trivia = Trivium::where('detail', 'like', '%'.$this->keyword.'%')->get();
-        return $trivia;
+        return $trivia->isEmpty() ? $this->emptyTrivium : $trivia->toArray();
     }
 
     public function searchByBoth(): array
@@ -53,6 +56,6 @@ class SearchService
         $trivia = Trivium::where('title', 'like', '%'.$this->keyword.'%')
             ->orWhere('detail', 'like', '%'.$this->keyword.'%')
             ->get();
-        return $trivia;
+        return $trivia->isEmpty() ? $this->emptyTrivium : $trivia->toArray();
     }
 }
