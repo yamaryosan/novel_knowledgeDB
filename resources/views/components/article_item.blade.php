@@ -3,7 +3,9 @@
         <h3>{{ $trivium->title }}</h3>
     </div>
     <div class="item_summary">
-        <p>{{ $trivium->summary }}</p>
+        @if ($trivium->summary !== 'EMPTY')
+            <p>{{ $trivium->summary }}</p>
+        @endif
     </div>
     <div class="item_detail">
         <p>{{ $trivium->detail }}</p>
