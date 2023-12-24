@@ -28,6 +28,10 @@
 
 @endcomponent
 
+@component('components.import_succeed')
+
+@endcomponent
+
 <!-- ここまで -->
 
 @endsection
