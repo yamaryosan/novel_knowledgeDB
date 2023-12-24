@@ -83,12 +83,12 @@ class HomeModeController extends Controller
         $files = $request->file('files');
         // ファイルが選択されていなければエラーを表示
         if (empty($files)) {
-            return redirect()->route('home')->with('flash_message', 'ファイルを選択してください');
+            return redirect()->route('home')->with('flash_error_message', 'ファイルを選択してください');
         }
         $fileService = new FileService('import');
         // テキストファイル以外はエラーを表示
         if (!$fileService->upload($files)) {
-            return redirect()->route('home')->with('flash_message', '.txtファイルを選択してください');
+            return redirect()->route('home')->with('flash_error_message', '.txtファイルを選択してください');
         }
         // 項目の取得
         $trivia = $fileService->read();
@@ -102,6 +102,6 @@ class HomeModeController extends Controller
             $trivium->save();
         }
 
-        return redirect()->route('home')->with('flash_message', 'インポートしました');
+        return redirect()->route('home')->with('flash_succeed_message', 'インポート完了!');
     }
 }
