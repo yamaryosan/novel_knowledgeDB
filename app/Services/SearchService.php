@@ -31,6 +31,7 @@ class SearchService
         $dummyData = new stdClass();
         $dummyData->id = 0;
         $dummyData->title = '検索結果がありません';
+        $dummyData->summary = '検索結果がありません';
         $dummyData->detail = '検索結果がありません';
         $dummyData->created_at = '検索結果がありません';
         $dummyData->updated_at = '検索結果がありません';

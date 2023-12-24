@@ -50,8 +50,7 @@ class HomeModeController extends Controller
         // キーワードを含む項目を取得
         $searchService = new SearchService($keyword, $target);
         $trivia = $searchService->search();
-        dd($trivia);
-        if (empty($trivia)) {
+        if ($trivia[0]->title === '検索結果がありません') {
             return redirect()->route('home')->with('flash_error_message', '検索結果がありません');
         }
 
