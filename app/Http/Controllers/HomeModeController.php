@@ -33,6 +33,9 @@ class HomeModeController extends Controller
     // 検索結果ページ
     public function result(Request $request)
     {
+        // 検索ターゲットを取得
+        $target = $request->input('target');
+
         // キーワードを取得
         $keyword = $request->input('keyword');
 
