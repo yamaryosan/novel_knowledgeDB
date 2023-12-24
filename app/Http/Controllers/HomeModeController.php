@@ -57,6 +57,7 @@ class HomeModeController extends Controller
         // 検索キーワードをビューに渡す
         return view('home_mode.result', [
             'keyword' => $keyword,
+            'target' => $target,
             'trivia' => $trivia,
         ]);
     }
