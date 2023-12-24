@@ -33,11 +33,12 @@ fileIconElement.addEventListener('click', function() {
 
     inputElement.click();
 
-    // 2度目のクリック時の場合、ファイル名を表示している要素や動的クラスを削除
+    // 2度目のクリック時の場合、ファイル名の表示やアニメーションを削除
     if (dropAreaElement.lastChild) {
         dropAreaElement.classList.remove('drop');
         fileIconElement.classList.remove('drop');
         dropAreaElement.removeChild(dropAreaElement.lastChild);
+        dropAreaElement.appendChild(inputElement);
     }
 
     // フォームにファイルがセットされるとchangeイベントが発火する
