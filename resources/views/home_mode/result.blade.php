@@ -14,7 +14,7 @@
     <body>
         <main>
             <div class="head_container">
-                <p>キーワード：{{ $keyword }} (対象: {{ $target }})</p>
+                <h2>「{{ $keyword }}」 ({{ $target }})</h2>
                 <p> {{ $trivia->count() }}件ヒット </p>
             </div>
             @foreach($trivia as $trivium)
