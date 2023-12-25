@@ -1,20 +1,25 @@
-<h2>検索結果</h2>
-<p>検索キーワード：{{ $keyword }}</p>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>"{{$keyword}}"の結果</title>
+        @vite([
+            'resources/css/app.css',
+            'resources/css/home_mode/home_mode.css',
+            'resources/css/home_mode/result.css',
+            'resources/css/home_mode/article_item.css',
+            ])
+    </head>
 
-@foreach($trivia as $trivium)
-    <div class="trivium">
-        <div class="item_title">
-            <h3>{{ $trivium->title }}</h3>
-        </div>
-        <div class="item_summary">
-            <p>{{ $trivium->summary }}</p>
-        </div>
-        <div class="item_detail">
-            <p>{{ $trivium->detail }}</p>
-        </div>
-        <div class="item_footer">
-            <p>作成日：{{ $trivium->created_at }}</p>
-            <p>更新日：{{ $trivium->updated_at }}</p>
-        </div>
-    </div>
-@endforeach
+    <body>
+        <main>
+            <div class="head_container">
+                <h2>「{{ $keyword }}」 ({{ $target }})</h2>
+                <p> {{ $trivia->count() }}件ヒット </p>
+            </div>
+            @foreach($trivia as $trivium)
+                @component('components.article_item', ['trivium' => $trivium])
+                @endcomponent
+            @endforeach
+        </main>
+</html>

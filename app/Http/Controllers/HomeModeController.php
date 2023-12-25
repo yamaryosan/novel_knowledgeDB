@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Models\Trivium;
 
 use App\Services\FileService;
+use App\Services\SearchService;
 
 class HomeModeController extends Controller
 {
@@ -36,15 +37,40 @@ class HomeModeController extends Controller
         // キーワードを取得
         $keyword = $request->input('keyword');
 
-        // キーワードを含む項目を取得
-        $trivia = Trivium::where('title', 'like', '%'.$keyword.'%')->get();
+        if (empty($keyword)) {
+            return redirect()->route('home')->with('flash_error_message', 'キーワードは必須です');
+        }
+        if (mb_strlen($keyword) > env('MAX_SEARCH_KEYWORD_LENGTH')) {
+            return redirect()->route('home')->with('flash_error_message', '30文字以内で入力してください');
+        }
 
-        dd($trivia);
+        // 検索ターゲットを取得
+        $target = $request->input('target');
+
+        // キーワードを含む項目を取得
+        $searchService = new SearchService($keyword, $target);
+        $trivia = $searchService->search();
+        if ($trivia[0]->title === '検索結果がありません') {
+            return redirect()->route('home')->with('flash_error_message', '検索結果がありません');
+        }
 
         // 検索キーワードをビューに渡す
         return view('home_mode.result', [
             'keyword' => $keyword,
+            'target' => $target,
             'trivia' => $trivia,
+        ]);
+    }
+
+    // 詳細ページ
+    public function show($id)
+    {
+        // IDを元に項目を取得
+        $trivium = Trivium::findOrFail($id);
+
+        // 詳細ページに渡す
+        return view('home_mode.show', [
+            'trivium' => $trivium,
         ]);
     }
 

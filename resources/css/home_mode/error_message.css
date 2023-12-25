@@ -1,4 +1,4 @@
-.import_error_container {
+.error_container {
     display: flex;
     justify-content: center;
     position: fixed;
@@ -9,7 +9,7 @@
     z-index: 1000;
 }
 
-.import_error_container .message {
+.error_container .message {
     width: 75%;
     display: flex;
     justify-content: center;
