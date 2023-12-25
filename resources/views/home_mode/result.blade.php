@@ -2,6 +2,7 @@
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.1/css/bootstrap.min.css">
         <title>"{{$keyword}}"の結果</title>
         @vite([
             'resources/css/app.css',
@@ -21,5 +22,6 @@
                 @component('components.article_item', ['trivium' => $trivium])
                 @endcomponent
             @endforeach
+            {{ $trivia->links() }}
         </main>
 </html>
