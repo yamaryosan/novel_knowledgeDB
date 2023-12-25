@@ -1,0 +1,35 @@
+.trivium_link {
+    text-decoration: none;
+    color: #434343;
+}
+
+.trivium_unit {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 100%;
+    margin-bottom: 20px;
+    border-radius: 10px;
+    background-color: #fff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    transition: 0.2s;
+    &:hover {
+        background-color: #ade8e6;
+    }
+    &:active {
+        background-color: #65d9d7;
+        box-shadow: 0 0 #ccc;
+    }
+}
+
+.trivium_unit:hover .item_title {
+    transition: 0.2s;
+    color: #000;
+}
+
+.item_title,
+.item_summary,
+.item_footer {
+    padding-left: 30px;
+    padding-right: 30px;
+}

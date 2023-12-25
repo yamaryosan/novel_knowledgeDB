@@ -13,9 +13,10 @@
 
     <body>
         <main>
-            <p>キーワード：{{ $keyword }} (対象: {{ $target }})</p>
-            <p> {{ $trivia->count() }}件ヒット </p>
-
+            <div class="head_container">
+                <p>キーワード：{{ $keyword }} (対象: {{ $target }})</p>
+                <p> {{ $trivia->count() }}件ヒット </p>
+            </div>
             @foreach($trivia as $trivium)
                 @component('components.article_item', ['trivium' => $trivium])
                 @endcomponent
