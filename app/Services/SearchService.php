@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace App\Services;
 use App\Models\Trivium;
 use Illuminate\Support\Collection;
+use Illuminate\Pagination\LengthAwarePaginator;
 use stdClass;
 
 class SearchService
@@ -38,7 +39,7 @@ class SearchService
         $this->emptyTrivium->push($dummyData);
     }
 
-    public function search(): Collection
+    public function search(): LengthAwarePaginator
     {
         if ($this->target === 'title') {
             return $this->searchByTitle();
@@ -49,24 +50,29 @@ class SearchService
         }
     }
 
-    public function searchByTitle(): Collection
+    public function searchByTitle(): LengthAwarePaginator
     {
-        $trivia = Trivium::where('title', 'like', '%'.$this->keyword.'%')->get();
+        $trivia = Trivium::where('title', 'like', '%'.$this->keyword.'%')
+        ->paginate(5)
+        ->appends(['target' => $this->target, 'keyword' => $this->keyword]);
         // 結果が空の場合はダミーの配列を返す
         return $trivia->isEmpty() ? $this->emptyTrivium : $trivia;
     }
 
-    public function searchByDetail(): Collection
+    public function searchByDetail(): LengthAwarePaginator
     {
-        $trivia = Trivium::where('detail', 'like', '%'.$this->keyword.'%')->get();
+        $trivia = Trivium::where('detail', 'like', '%'.$this->keyword.'%')
+        ->paginate(5)
+        ->appends(['target' => $this->target, 'keyword' => $this->keyword]);
         return $trivia->isEmpty() ? $this->emptyTrivium : $trivia;
     }
 
-    public function searchByBoth(): Collection
+    public function searchByBoth(): LengthAwarePaginator
     {
         $trivia = Trivium::where('title', 'like', '%'.$this->keyword.'%')
             ->orWhere('detail', 'like', '%'.$this->keyword.'%')
-            ->get();
+            ->paginate(5)
+            ->appends(['target' => $this->target, 'keyword' => $this->keyword]);
         return $trivia->isEmpty() ? $this->emptyTrivium : $trivia;
     }
 }
