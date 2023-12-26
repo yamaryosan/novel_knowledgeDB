@@ -86,8 +86,8 @@ class HomeModeController extends Controller
         // バリデーション
         $request->validate([
             'title' => 'required|max:255',
-            'summary' => 'required|max:255',
-            'detail' => 'required|max:255',
+            'summary' => 'required',
+            'detail' => 'required',
         ]);
 
         // モデルを使って、DBに保存する値をセット
