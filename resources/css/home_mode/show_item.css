@@ -1,0 +1,20 @@
+.trivium_unit {
+    margin-bottom: 1em;
+    padding: 1em;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.item_title {
+    margin-bottom: 0.5em;
+}
+
+.item_summary {
+    font-size: 1.2em;
+    margin-bottom: 0.5em;
+}
+
+.item_detail {
+    font-size: 1.2em;
+    margin-bottom: 0.5em;
+}
