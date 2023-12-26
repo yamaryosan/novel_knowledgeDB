@@ -10,6 +10,7 @@
             'resources/css/home_mode/result.css',
             'resources/css/home_mode/article_item.css',
             'resources/css/home_mode/pagination.css',
+            'resources/css/home_mode/previous_page_link.css',
             ])
     </head>
 
@@ -24,5 +25,9 @@
                 @endcomponent
             @endforeach
             {{ $trivia->links('vendor.pagination.bootstrap-4') }}
+
+        @component('components.previous_page_link', ['previousPageUrl' => $previousPageUrl])
+
+        @endcomponent
         </main>
 </html>
