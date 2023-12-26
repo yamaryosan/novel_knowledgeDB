@@ -37,6 +37,14 @@ class SearchService
         $dummyData->created_at = '検索結果がありません';
         $dummyData->updated_at = '検索結果がありません';
         $this->emptyTrivium->push($dummyData);
+
+        // ダミー用のインスタンスをLengthAwarePaginatorにする
+        $this->emptyTrivium = new LengthAwarePaginator(
+            $this->emptyTrivium,
+            $this->emptyTrivium->count(),
+            5,
+            1
+        );
     }
 
     public function search(): LengthAwarePaginator
