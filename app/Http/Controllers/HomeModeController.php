@@ -59,6 +59,7 @@ class HomeModeController extends Controller
             'keyword' => $keyword,
             'target' => $target,
             'trivia' => $trivia,
+            'previousPageUrl' => route('home'),
         ]);
     }
 
