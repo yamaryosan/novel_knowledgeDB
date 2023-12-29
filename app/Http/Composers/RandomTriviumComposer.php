@@ -10,7 +10,10 @@ class RandomTriviumComposer
 {
     public function compose(View $view)
     {
-        $randomTrivium = Trivium::inRandomOrder()->first();
-        $view->with('randomTrivium', $randomTrivium);
+        $randomTrivia = [];
+        for ($i = 0; $i < 10; $i++) {
+            $randomTrivia[] = Trivium::inRandomOrder()->first();
+        }
+        $view->with('randomTrivia', $randomTrivia);
     }
 }
