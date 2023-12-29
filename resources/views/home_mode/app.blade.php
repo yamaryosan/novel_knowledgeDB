@@ -12,6 +12,7 @@
             'resources/css/home_mode/link_btn.css',
             'resources/css/home_mode/error_message.css',
             'resources/css/home_mode/import_succeed.css',
+            'resources/css/home_mode/article_item.css',
             'resources/js/home_mode/import.js',
             'resources/js/home_mode/error_message_hide.js',
             'resources/js/home_mode/import_error_detect.js',
