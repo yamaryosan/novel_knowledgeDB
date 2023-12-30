@@ -11,6 +11,7 @@
             'resources/css/home_mode/article_item.css',
             'resources/css/home_mode/pagination.css',
             'resources/css/home_mode/previous_page_link.css',
+            'resources/js/home_mode/article_item.js',
             ])
     </head>
 

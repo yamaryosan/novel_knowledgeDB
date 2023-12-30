@@ -18,6 +18,7 @@
             'resources/js/home_mode/import_error_detect.js',
             'resources/js/home_mode/import_succeed_message_hide.js',
             'resources/js/home_mode/keyword_empty_error.js',
+            'resources/js/home_mode/article_item.js',
             ])
     </head>
     <body>
