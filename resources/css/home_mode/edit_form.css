@@ -53,6 +53,7 @@
         background-color: #ade8e6;
         box-shadow: 0 6px #999;
         border-radius: 3px;
+        cursor: pointer;
         &:hover {
             background-color: #65d9d7;
         }
