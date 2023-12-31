@@ -13,4 +13,5 @@
     <div class="item_footer">
         <p>{{ $trivium->updated_at }}</p>
     </div>
+    <a href="{{ route('edit', ['id' => $trivium->id]) }}" class="edit_btn">編集</a>
 </div>
