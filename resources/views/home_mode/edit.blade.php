@@ -6,14 +6,14 @@
         @vite([
             'resources/css/app.css',
             'resources/css/home_mode/home_mode.css',
-            'resources/css/home_mode/edit_form.css'
+            'resources/css/home_mode/edit_form.css',
+            'resources/js/home_mode/edit_form.js'
             ])
     </head>
     <body>
         <main>
             @component('components.edit_form',
             ['id'=>$trivium->id, 'title'=>$trivium->title, 'summary'=>$trivium->summary, 'detail'=>$trivium->detail])
-
             @endcomponent
         </main>
     </body>
