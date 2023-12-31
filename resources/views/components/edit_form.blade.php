@@ -8,13 +8,17 @@
     </div>
     <div class="summary_container">
         <p>概要</p>
-        <textarea name="summary" class="summary_input" cols="20" rows="5" required>{{ $summary }}</textarea>
+        @if($summary === "EMPTY")
+            <textarea name="summary" class="summary_input" cols="20" rows="5" required></textarea>
+        @else
+            <textarea name="summary" class="summary_input" cols="20" rows="5" required>{{ $summary }}</textarea>
+        @endif
     </div>
     <div class="detail_container">
         <p>詳細</p>
         <textarea name="detail" class="detail_input" cols="20" rows="5" required>{{ $detail }}</textarea>
     </div>
-    <input type="submit" value="追加" class="submit_btn">
+    <input type="submit" value="更新" class="submit_btn">
 </form>
 
 <!-- スマホ用エラーメッセージ -->
