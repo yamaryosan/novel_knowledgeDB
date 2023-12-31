@@ -39,3 +39,4 @@ Route::get('/create', [HomeModeController::class, 'create'])->name('create');
 Route::post('/store', [HomeModeController::class, 'store'])->name('store');
 Route::get('/show/{id}', [HomeModeController::class, 'show'])->name('show');
 Route::get('/edit/{id}', [HomeModeController::class, 'edit'])->name('edit');
+Route::post('/update/{id}', [HomeModeController::class, 'update'])->name('update');
