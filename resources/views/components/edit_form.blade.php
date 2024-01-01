@@ -1,6 +1,6 @@
 <!-- 雑学項目編集フォーム -->
 
-<form action="{{ route('update', ['id'=>$id]) }}" class="edit_form" method="POST">
+<form action="{{ route('update', ['id'=>$id]) }}" class="submit_form" method="POST">
     @csrf
     <div class="title_container">
         <p>タイトル</p>
