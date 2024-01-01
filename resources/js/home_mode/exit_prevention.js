@@ -4,7 +4,7 @@ function confirmPageLeave(event) {
 
 window.addEventListener('beforeunload', confirmPageLeave);
 
-const submitForm = document.querySelector('.edit_form');
+const submitForm = document.querySelector('.submit_form');
 
 submitForm.addEventListener('submit', ()=> {
     window.removeEventListener('beforeunload', confirmPageLeave);
