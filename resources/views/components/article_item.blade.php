@@ -16,5 +16,7 @@
             </div>
         </div>
     </a>
-    <a href="{{ route('edit', ['id' => $trivium->id]) }}" class="edit_btn">編集</a>
+    @component('components.edit_button')
+        @slot('id', $trivium->id)
+    @endcomponent
 </div>
