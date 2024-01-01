@@ -104,6 +104,43 @@ class HomeModeController extends Controller
         return redirect()->route('home');
     }
 
+    // 編集ページ
+    public function edit($id)
+    {
+        // IDを元に項目を取得
+        $trivium = Trivium::findOrFail($id);
+
+        // 編集ページに渡す
+        return view('home_mode.edit', [
+            'trivium' => $trivium,
+        ]);
+    }
+
+    // 更新
+    public function update(Request $request, $id)
+    {
+        // バリデーション
+        $request->validate([
+            'title' => 'required|max:255',
+            'summary' => 'required',
+            'detail' => 'required',
+        ]);
+
+        // IDを元に項目を取得
+        $trivium = Trivium::findOrFail($id);
+
+        // モデルを使って、DBに保存する値をセット
+        $trivium->title = $request->title;
+        $trivium->summary = $request->summary;
+        $trivium->detail = $request->detail;
+
+        // DBに保存
+        $trivium->save();
+
+        // トップページにリダイレクト
+        return redirect()->route('home');
+    }
+
     // インポート
     public function import(Request $request)
     {
