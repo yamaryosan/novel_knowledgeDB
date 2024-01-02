@@ -63,8 +63,33 @@
     }
 }
 
+.delete_btn {
+    position: absolute;
+    bottom: 1rem;
+    right: 1rem;
+    background-image: url("../../images/trashbox.png");
+    background-size: 2rem 2rem;
+    background-repeat: no-repeat;
+    text-indent: -9999px;
+    overflow: hidden;
+    width: 2rem;
+    height: 2rem;
+    text-decoration: none;
+    transition: 0.2s;
+    cursor: pointer;
+    &:hover {
+        scale: 1.2;
+    }
+    &:active {
+        scale: 1.5;
+    }
+}
+
 @media (max-width: 600px) {
     .edit_btn {
+        display: none;
+    }
+    .delete_btn {
         display: none;
     }
 }
