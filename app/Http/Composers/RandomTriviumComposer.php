@@ -11,7 +11,11 @@ class RandomTriviumComposer
     public function compose(View $view)
     {
         $randomTrivia = [];
-        for ($i = 0; $i < 10; $i++) {
+        // 現在の全項目数を取得
+        $maxNum = Trivium::all()->count();
+        // 表示数を最大10個に設定
+        $showNum = min($maxNum, 10);
+        for ($i = 0; $i < $showNum; $i++) {
             $randomTrivia[] = Trivium::inRandomOrder()->first();
         }
         $view->with('randomTrivia', $randomTrivia);
