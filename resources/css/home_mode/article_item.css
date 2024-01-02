@@ -89,4 +89,7 @@
     .edit_btn {
         display: none;
     }
+    .delete_btn {
+        display: none;
+    }
 }
