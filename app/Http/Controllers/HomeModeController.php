@@ -147,7 +147,7 @@ class HomeModeController extends Controller
         // DBのレコードを削除
         $trivium = Trivium::findOrFail($id);
         $msg = "{$trivium->title}を削除完了";
-        // $trivium->delete();
+        $trivium->delete();
 
         // トップページにリダイレクト
         return redirect()->route('home')->with('flash_succeed_message', $msg);
