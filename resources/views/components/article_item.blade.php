@@ -19,4 +19,7 @@
     @component('components.edit_button')
         @slot('id', $trivium->id)
     @endcomponent
+    @component('components.delete_button')
+        @slot('id', $trivium->id)
+    @endcomponent
 </div>
