@@ -141,6 +141,18 @@ class HomeModeController extends Controller
         return redirect()->route('home');
     }
 
+    // 削除
+    public function delete(int $id)
+    {
+        // DBのレコードを削除
+        $trivium = Trivium::findOrFail($id);
+        $msg = "{$trivium->title}を削除完了";
+        // $trivium->delete();
+
+        // トップページにリダイレクト
+        return redirect()->route('home')->with('flash_succeed_message', $msg);
+    }
+
     // インポート
     public function import(Request $request)
     {
