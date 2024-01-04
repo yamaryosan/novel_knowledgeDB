@@ -75,6 +75,30 @@ class HomeModeController extends Controller
         ]);
     }
 
+    // プレビューページ
+    public function preview(Request $request, $id = null)
+    {
+        // 新規作成か編集か判定
+        $mode = '';
+        $id = $request->input('id');
+        if (is_null($id) === true) {
+            $mode = 'create';
+        } else {
+            $mode = 'edit';
+        }
+
+        $title = $request->input('title');
+        $summary = $request->input('summary');
+        $detail = $request->input('detail');
+        // バリデーション
+        $request->validate([
+            'title' => 'required|max:255',
+            'summary' => 'required',
+            'detail' => 'required',
+        ]);
+        return view('home_mode.preview', compact('title', 'summary', 'detail', 'mode', 'id'));
+    }
+
     // 新規作成ページ
     public function create()
     {
@@ -84,13 +108,6 @@ class HomeModeController extends Controller
     // 新規作成
     public function store(Request $request)
     {
-        // バリデーション
-        $request->validate([
-            'title' => 'required|max:255',
-            'summary' => 'required',
-            'detail' => 'required',
-        ]);
-
         // モデルを使って、DBに保存する値をセット
         $trivium = new Trivium;
         $trivium->title = $request->title;
@@ -119,13 +136,6 @@ class HomeModeController extends Controller
     // 更新
     public function update(Request $request, $id)
     {
-        // バリデーション
-        $request->validate([
-            'title' => 'required|max:255',
-            'summary' => 'required',
-            'detail' => 'required',
-        ]);
-
         // IDを元に項目を取得
         $trivium = Trivium::findOrFail($id);
 
