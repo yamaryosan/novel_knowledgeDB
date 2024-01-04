@@ -41,3 +41,4 @@ Route::get('/show/{id}', [HomeModeController::class, 'show'])->name('show');
 Route::get('/edit/{id}', [HomeModeController::class, 'edit'])->name('edit');
 Route::post('/update/{id}', [HomeModeController::class, 'update'])->name('update');
 Route::get('/delete/{id}', [HomeModeController::class, 'delete'])->name('delete');
+Route::post('/preview', [HomeModeController::class, 'preview'])->name('preview');
