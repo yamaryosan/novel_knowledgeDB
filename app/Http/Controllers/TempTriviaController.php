@@ -26,9 +26,9 @@ class TempTriviaController extends Controller
     public function update(Request $request, $id)
     {
         $tempTrivium = TempTrivium::findOrFail($id);
-        $tempTrivium->title = $request->title;
-        $tempTrivium->summary = $request->summary;
-        $tempTrivium->detail = $request->detail;
+        $tempTrivium->title = $request->title ?? '';
+        $tempTrivium->summary = $request->summary ?? '';
+        $tempTrivium->detail = $request->detail ?? '';
         $tempTrivium->save();
         return redirect()->route('temp');
     }
