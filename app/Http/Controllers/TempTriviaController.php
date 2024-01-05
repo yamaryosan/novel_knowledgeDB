@@ -15,9 +15,21 @@ class TempTriviaController extends Controller
         return view('temp.index', compact('tempTrivia', 'previousPageUrl'));
     }
 
+    // 編集用フォーム
     public function edit($id)
     {
         $tempTrivium = TempTrivium::findOrFail($id);
         return view('temp.edit', compact('tempTrivium'));
+    }
+
+    // 編集内容の保存
+    public function update(Request $request, $id)
+    {
+        $tempTrivium = TempTrivium::findOrFail($id);
+        $tempTrivium->title = $request->title;
+        $tempTrivium->summary = $request->summary;
+        $tempTrivium->detail = $request->detail;
+        $tempTrivium->save();
+        return redirect()->route('temp');
     }
 }
