@@ -1,5 +1,5 @@
 <div class="article_item_container">
-    <a href="{{ route('show', ['id' => $trivium->id]) }}" class="trivium_link">
+    <a href="{{ route('temp_edit', ['id' => $trivium->id]) }}" class="trivium_link">
         <div class="trivium_unit">
             <div class="item_title">
                 <h3>{{ $trivium->title }}</h3>
