@@ -11,6 +11,7 @@ class TempTriviaController extends Controller
     public function index()
     {
         $tempTrivia = TempTrivium::all();
-        return view('home_mode.index', compact('tempTrivia'));
+        $previousPageUrl = route('home');
+        return view('temp.index', compact('tempTrivia', 'previousPageUrl'));
     }
 }
