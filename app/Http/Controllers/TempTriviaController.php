@@ -14,4 +14,10 @@ class TempTriviaController extends Controller
         $previousPageUrl = route('home');
         return view('temp.index', compact('tempTrivia', 'previousPageUrl'));
     }
+
+    public function edit($id)
+    {
+        $tempTrivium = TempTrivium::findOrFail($id);
+        return view('temp.edit', compact('tempTrivium'));
+    }
 }
