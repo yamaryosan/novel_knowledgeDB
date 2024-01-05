@@ -27,6 +27,10 @@
 
 @endcomponent
 
+@component('components.temp_save_button')
+
+@endcomponent
+
 @component('components.error_message')
 
 @endcomponent
