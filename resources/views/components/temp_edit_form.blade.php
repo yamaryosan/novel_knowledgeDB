@@ -18,7 +18,7 @@
         <p>詳細</p>
         <textarea name="detail" class="detail_input" cols="20" rows="5" required>{{ $detail }}</textarea>
     </div>
-    <input type="button" class="resave_btn" value="再保存">
+    <input type="button" class="save_btn" value="再保存">
     <input type="button" class="submit_btn" value="作成">
 </form>
 
