@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PseudoPageController;
 use App\Http\Controllers\WorkspaceModeController;
 use App\Http\Controllers\HomeModeController;
+use App\Http\Controllers\TempTriviaController;
 
 /*
 |--------------------------------------------------------------------------
@@ -42,3 +43,4 @@ Route::get('/edit/{id}', [HomeModeController::class, 'edit'])->name('edit');
 Route::post('/update/{id}', [HomeModeController::class, 'update'])->name('update');
 Route::get('/delete/{id}', [HomeModeController::class, 'delete'])->name('delete');
 Route::post('/preview', [HomeModeController::class, 'preview'])->name('preview');
+Route::get('/temp', [TempTriviaController::class, 'index'])->name('temp');
