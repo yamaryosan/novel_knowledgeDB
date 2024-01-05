@@ -44,3 +44,5 @@ Route::post('/update/{id}', [HomeModeController::class, 'update'])->name('update
 Route::get('/delete/{id}', [HomeModeController::class, 'delete'])->name('delete');
 Route::post('/preview', [HomeModeController::class, 'preview'])->name('preview');
 Route::get('/temp', [TempTriviaController::class, 'index'])->name('temp');
+Route::get('/temp/edit/{id}', [TempTriviaController::class, 'edit'])->name('temp_edit');
+Route::post('/temp/update/{id}', [TempTriviaController::class, 'update'])->name('temp_update');
