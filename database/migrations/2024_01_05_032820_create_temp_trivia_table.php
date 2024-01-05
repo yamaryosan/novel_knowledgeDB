@@ -12,7 +12,10 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('temp_trivia', function (Blueprint $table) {
-            $table->id();
+            $table->bigIncrements('id');
+            $table->string('title', 255)->comment('タイトル');
+            $table->text('summary')->comment('総論');
+            $table->text('detail')->comment('詳細');
             $table->timestamps();
         });
     }
