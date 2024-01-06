@@ -11,7 +11,9 @@
             'resources/css/home_mode/article_item.css',
             'resources/css/home_mode/pagination.css',
             'resources/css/home_mode/previous_page_link.css',
+            'resources/css/home_mode/import_succeed.css',
             'resources/js/home_mode/article_item.js',
+            'resources/js/home_mode/import_succeed_message_hide.js',
             ])
     </head>
 
@@ -23,6 +25,10 @@
             @endforeach
 
             @component('components.previous_page_link', ['previousPageUrl' => $previousPageUrl])
+
+            @endcomponent
+
+            @component('components.import_succeed')
 
             @endcomponent
         </main>

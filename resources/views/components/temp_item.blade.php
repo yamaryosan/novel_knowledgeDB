@@ -17,6 +17,7 @@
         </div>
     </a>
     @component('components.delete_button')
+        @slot('route', 'temp_delete')
         @slot('id', $trivium->id)
     @endcomponent
 </div>
