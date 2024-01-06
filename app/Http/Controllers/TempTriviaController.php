@@ -32,4 +32,13 @@ class TempTriviaController extends Controller
         $tempTrivium->save();
         return redirect()->route('temp');
     }
+
+    // 削除
+    public function delete($id)
+    {
+        $tempTrivium = TempTrivium::findOrFail($id);
+        $msg = "{$tempTrivium->title}を削除完了";
+        $tempTrivium->delete();
+        return redirect()->route('temp')->with('flash_succeed_message', $msg);
+    }
 }
