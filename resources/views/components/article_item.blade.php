@@ -21,5 +21,6 @@
     @endcomponent
     @component('components.delete_button')
         @slot('id', $trivium->id)
+        @slot('route', 'delete')
     @endcomponent
 </div>
