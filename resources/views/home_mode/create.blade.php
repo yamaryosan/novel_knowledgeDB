@@ -13,7 +13,7 @@
     </head>
     <body>
         <main>
-            @component('components.new_addition')
+            @component('components.create_form')
 
             @endcomponent
         </main>

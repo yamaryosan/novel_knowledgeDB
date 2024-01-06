@@ -14,6 +14,7 @@
         <p>詳細</p>
         <textarea name="detail" class="detail_input" cols="20" rows="5" required></textarea>
     </div>
+    <input type="button" value="一時保存" class="temp_save_btn">
     <input type="submit" value="追加" class="submit_btn">
 </form>
 
