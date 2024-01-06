@@ -1,6 +1,6 @@
 <!-- 雑学項目編集フォーム -->
 
-<form action="{{ route('preview', ['id'=>$id]) }}" class="submit_form" method="POST">
+<form class="submit_form" method="POST" data-save-route="{{ route('temp_store', ['id' => $id]) }}" data-submit-route="{{ route('preview') }}">
     @csrf
     <div class="title_container">
         <p>タイトル</p>
@@ -18,7 +18,8 @@
         <p>詳細</p>
         <textarea name="detail" class="detail_input" cols="20" rows="5" required>{{ $detail }}</textarea>
     </div>
-    <input type="submit" value="更新" class="submit_btn">
+    <input type="button" value="一時保存" class="temp_save_btn">
+    <input type="button" value="追加" class="submit_btn">
 </form>
 
 <!-- スマホ用エラーメッセージ -->
