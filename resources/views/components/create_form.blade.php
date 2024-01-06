@@ -15,8 +15,13 @@
         <textarea name="detail" class="detail_input" cols="20" rows="5" required></textarea>
     </div>
     <input type="button" value="一時保存" class="temp_save_btn">
-    <input type="submit" value="追加" class="submit_btn">
+    <input type="button" value="追加" class="submit_btn">
 </form>
+
+<!-- 追加失敗時のエラーメッセージ -->
+@component('components.error_message')
+
+@endcomponent
 
 <!-- スマホ用エラーメッセージ -->
 @component('components.pc_only_message')
