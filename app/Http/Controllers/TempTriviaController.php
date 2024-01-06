@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 
 use App\Models\TempTrivium;
+use App\Models\Trivium;
 
 class TempTriviaController extends Controller
 {
@@ -18,6 +19,17 @@ class TempTriviaController extends Controller
     // 新規作成処理
     public function store(Request $request)
     {
+        // 遷移元が新規作成ページか編集ページか判定
+        $mode = '';
+        $id = $request->query('id');
+        if (is_null($id) === true) {
+            $mode = 'create';
+        } else {
+            $mode = 'edit';
+            // 編集ページの場合は既存のデータを削除
+            $trivium = Trivium::findOrFail($id);
+            $trivium->delete();
+        }
         $tempTrivium = new TempTrivium();
         $tempTrivium->title = $request->title ?? '';
         $tempTrivium->summary = $request->summary ?? '';
