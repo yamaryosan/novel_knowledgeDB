@@ -1,6 +1,6 @@
-<!-- 雑学項目編集フォーム -->
+<!-- 一時保存項目編集フォーム -->
 
-<form class="submit_form" method="POST" data-temp-save-route="{{ route('temp_update', ['id'=>$id]) }}">
+<form class="submit_form" method="POST" data-save-route="{{ route('temp_update', ['id'=>$id]) }}" data-submit-route="{{ route('temp_preview', ['id'=>$id]) }}">
     @csrf
     <div class="title_container">
         <p>タイトル</p>

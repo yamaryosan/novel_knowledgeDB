@@ -1,17 +1,6 @@
-const form = document.querySelector('.submit_form');
-const save_btn = document.querySelector('.save_btn');
-const submit_btn = document.querySelector('.submit_btn');
+import buttonRoute from "../home_mode/button_route";
 
-save_btn.addEventListener('click', function() {
-    form.action = form.dataset.tempSaveRoute;
-    form.submit();
-});
-
-/*
-document.getElementById('submitForm').addEventListener('click', function() {
-    var form = document.getElementById('myForm');
-    form.action = form.getAttribute('data-submit-route');
-    form.submit();
-});
-
-*/
+const saveRoute = document.querySelector('.submit_form').dataset.saveRoute;
+const submitRoute = document.querySelector('.submit_form').dataset.submitRoute;
+buttonRoute('submit_form', 'save_btn', saveRoute, false);
+buttonRoute('submit_form', 'submit_btn', submitRoute, true);

@@ -34,7 +34,7 @@ class TempTriviaController extends Controller
         $tempTrivium->title = $request->title ?? '';
         $tempTrivium->summary = $request->summary ?? '';
         $tempTrivium->detail = $request->detail ?? '';
-        $msg = "「{$tempTrivium->title}」を保存しました";
+        $msg = "「{$tempTrivium->title}」を保存完了";
         $tempTrivium->save();
         return redirect()->route('home')->with('flash_succeed_message', $msg);
     }
@@ -64,5 +64,40 @@ class TempTriviaController extends Controller
         $msg = "{$tempTrivium->title}を削除完了";
         $tempTrivium->delete();
         return redirect()->route('temp')->with('flash_succeed_message', $msg);
+    }
+
+    // プレビュー
+    public function preview(Request $request)
+    {
+        // バリデーション
+        $request->validate([
+            'title' => 'required|max:255',
+            'summary' => 'required',
+            'detail' => 'required',
+        ]);
+        $trivium = new TempTrivium();
+        $id = $request->id;
+        $title = $request->title ?? '';
+        $summary = $request->summary ?? '';
+        $detail = $request->detail ?? '';
+        return view('temp.preview', compact('id', 'title', 'summary', 'detail'));
+    }
+
+    // 一時保存項目を正式に保存
+    public function migrate(Request $request)
+    {
+        // 一時保存項目を削除
+        $id = $request->id;
+        $tempTrivium = TempTrivium::findOrFail($request->id);
+        $tempTrivium->delete();
+
+        // 正式に保存
+        $trivium = new Trivium();
+        $trivium->title = $request->title;
+        $trivium->summary = $request->summary;
+        $trivium->detail = $request->detail;
+        $trivium->save();
+        $msg = "「{$trivium->title}」を作成完了";
+        return redirect()->route('home')->with('flash_succeed_message', $msg);
     }
 }
