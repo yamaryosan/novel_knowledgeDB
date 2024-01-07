@@ -70,6 +70,7 @@ class TempTriviaController extends Controller
     public function preview(Request $request)
     {
         $trivium = new TempTrivium();
+        $id = $request->id;
         $title = $request->title ?? '';
         $summary = $request->summary ?? '';
         $detail = $request->detail ?? '';
