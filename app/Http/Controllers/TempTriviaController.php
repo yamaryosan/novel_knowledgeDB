@@ -75,4 +75,21 @@ class TempTriviaController extends Controller
         $detail = $request->detail ?? '';
         return view('temp.preview', compact('title', 'summary', 'detail'));
     }
+
+    // 一時保存項目を正式に保存
+    public function migrate(Request $request)
+    {
+        // 一時保存項目を削除
+        $id = $request->query('id');
+        $tempTrivium = TempTrivium::findOrFail($request->id);
+        $tempTrivium->delete();
+
+        // 正式に保存
+        $trivium = new Trivium();
+        $trivium->title = $tempTrivium->title;
+        $trivium->summary = $tempTrivium->summary;
+        $trivium->detail = $tempTrivium->detail;
+        $msg = "{$trivium->title}を保存しました";
+        return redirect()->route('home')->with('flash_succeed_message', $msg);
+    }
 }
