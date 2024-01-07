@@ -19,6 +19,7 @@
             'resources/js/home_mode/import_succeed_message_hide.js',
             'resources/js/home_mode/keyword_empty_error.js',
             'resources/js/home_mode/article_item.js',
+            'resources/js/home_mode/all_delete_button.js',
             ])
     </head>
     <body>
