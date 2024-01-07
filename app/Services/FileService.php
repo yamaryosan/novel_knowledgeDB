@@ -93,7 +93,7 @@ class FileService
         foreach ($contentArray as $content){
             $trivium = $this->splitByDoubleEllipsis($content);
             $title = $trivium[0];
-            $summary = 'EMPTY';
+            $summary = '';
             $detail = $trivium[1];
             $trivia[] = ['title' => $title, 'summary' => $summary, 'detail' => $detail];
         }
