@@ -8,11 +8,7 @@
     </div>
     <div class="summary_container">
         <p>概要</p>
-        @if($summary === "EMPTY")
-            <textarea name="summary" class="summary_input" cols="20" rows="5" required></textarea>
-        @else
-            <textarea name="summary" class="summary_input" cols="20" rows="5" required>{{ $summary }}</textarea>
-        @endif
+        <textarea name="summary" class="summary_input" cols="20" rows="5" required>{{ $summary }}</textarea>
     </div>
     <div class="detail_container">
         <p>詳細</p>
