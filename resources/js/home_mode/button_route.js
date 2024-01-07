@@ -8,11 +8,15 @@ function buttonRoute(formClassName, btnClassName, route) {
     const btn = document.querySelector(`.${btnClassName}`);
 
     if (!form || !btn) {
-        console.error('buttonRoute: form or btn is null');
+        console.trace('buttonRoute: form or btn is null');
     }
 
     if (!route) {
-        console.error('buttonRoute: formRoute is null');
+        console.trace('buttonRoute: formRoute is null');
+    }
+
+    if (isValidate === undefined) {
+        console.trace('buttonRoute: isValidate is undefined');
     }
 
     btn.addEventListener('click', ()=> {
