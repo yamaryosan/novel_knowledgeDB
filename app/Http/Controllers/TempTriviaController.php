@@ -73,7 +73,7 @@ class TempTriviaController extends Controller
         $title = $request->title ?? '';
         $summary = $request->summary ?? '';
         $detail = $request->detail ?? '';
-        return view('temp.preview', compact('title', 'summary', 'detail'));
+        return view('temp.preview', compact('id', 'title', 'summary', 'detail'));
     }
 
     // 一時保存項目を正式に保存
