@@ -31,6 +31,10 @@
 
 @endcomponent
 
+@component('components.all_delete_button')
+
+@endcomponent
+
 @component('components.error_message')
 
 @endcomponent
