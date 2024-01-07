@@ -65,4 +65,14 @@ class TempTriviaController extends Controller
         $tempTrivium->delete();
         return redirect()->route('temp')->with('flash_succeed_message', $msg);
     }
+
+    // プレビュー
+    public function preview(Request $request)
+    {
+        $trivium = new TempTrivium();
+        $title = $request->title ?? '';
+        $summary = $request->summary ?? '';
+        $detail = $request->detail ?? '';
+        return view('temp.preview', compact('title', 'summary', 'detail'));
+    }
 }
