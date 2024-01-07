@@ -2,8 +2,9 @@
  * @param {string} formClassName フォームのクラス名
  * @param {string} btnClassName ボタンのクラス名
  * @param {string} route パス
+ * @param {boolean} isValidate バリデーションを行うかどうか
 */
-function buttonRoute(formClassName, btnClassName, route) {
+function buttonRoute(formClassName, btnClassName, route, isValidate) {
     const form = document.querySelector(`.${formClassName}`);
     const btn = document.querySelector(`.${btnClassName}`);
 
@@ -20,6 +21,11 @@ function buttonRoute(formClassName, btnClassName, route) {
     }
 
     btn.addEventListener('click', ()=> {
+        if (!isValidate) {
+            form.action = route;
+            form.submit();
+            return;
+        }
         if (!form.reportValidity()) {
             return;
         }

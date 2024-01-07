@@ -11,5 +11,5 @@ activateTextarea('detail_container');
 
 const saveRoute = document.querySelector('.submit_form').dataset.saveRoute;
 const submitRoute = document.querySelector('.submit_form').dataset.submitRoute;
-buttonRoute('submit_form', 'temp_save_btn', saveRoute);
-buttonRoute('submit_form', 'submit_btn', submitRoute);
+buttonRoute('submit_form', 'temp_save_btn', saveRoute, false);
+buttonRoute('submit_form', 'submit_btn', submitRoute, true);
