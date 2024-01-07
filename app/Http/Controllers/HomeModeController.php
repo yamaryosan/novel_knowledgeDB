@@ -163,6 +163,16 @@ class HomeModeController extends Controller
         return redirect()->route('home')->with('flash_succeed_message', $msg);
     }
 
+    // 全削除
+    public function all_delete()
+    {
+        // DBのレコードを全削除
+        Trivium::truncate();
+
+        // トップページにリダイレクト
+        return redirect()->route('home')->with('flash_succeed_message', '全削除完了');
+    }
+
     // インポート
     public function import(Request $request)
     {
