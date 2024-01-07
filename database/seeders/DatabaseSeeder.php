@@ -20,5 +20,7 @@ class DatabaseSeeder extends Seeder
         // ]);
         $this->call(TriviumTableSeeder::class);
         $this->call(TempTriviaTableSeeder::class);
+        $this->call(TestTriviaTableSeeder::class);
+        $this->call(TestTempTriviaTableSeeder::class);
     }
 }
