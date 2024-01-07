@@ -34,7 +34,7 @@ class TempTriviaController extends Controller
         $tempTrivium->title = $request->title ?? '';
         $tempTrivium->summary = $request->summary ?? '';
         $tempTrivium->detail = $request->detail ?? '';
-        $msg = "「{$tempTrivium->title}」を保存しました";
+        $msg = "「{$tempTrivium->title}」を保存完了";
         $tempTrivium->save();
         return redirect()->route('home')->with('flash_succeed_message', $msg);
     }
