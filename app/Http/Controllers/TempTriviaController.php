@@ -80,7 +80,7 @@ class TempTriviaController extends Controller
     public function migrate(Request $request)
     {
         // 一時保存項目を削除
-        $id = $request->query('id');
+        $id = $request->id;
         $tempTrivium = TempTrivium::findOrFail($request->id);
         $tempTrivium->delete();
 
