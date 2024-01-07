@@ -76,11 +76,11 @@ class HomeModeController extends Controller
     }
 
     // プレビューページ
-    public function preview(Request $request, $id = null)
+    public function preview(Request $request)
     {
-        // 新規作成か編集か判定
+        // 新規作成か編集か判定 (idがあれば編集、なければ新規作成)
         $mode = '';
-        $id = $request->input('id');
+        $id = $request->id;
         if (is_null($id) === true) {
             $mode = 'create';
         } else {

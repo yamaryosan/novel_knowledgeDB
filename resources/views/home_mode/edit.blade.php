@@ -13,8 +13,11 @@
     </head>
     <body>
         <main>
-            @component('components.edit_form',
-            ['id'=>$trivium->id, 'title'=>$trivium->title, 'summary'=>$trivium->summary, 'detail'=>$trivium->detail])
+            @component('components.edit_form')
+                @slot('id', $trivium->id)
+                @slot('title', $trivium->title)
+                @slot('summary', $trivium->summary)
+                @slot('detail', $trivium->detail)
             @endcomponent
         </main>
     </body>
