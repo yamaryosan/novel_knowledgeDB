@@ -69,6 +69,12 @@ class TempTriviaController extends Controller
     // プレビュー
     public function preview(Request $request)
     {
+        // バリデーション
+        $request->validate([
+            'title' => 'required|max:255',
+            'summary' => 'required',
+            'detail' => 'required',
+        ]);
         $trivium = new TempTrivium();
         $id = $request->id;
         $title = $request->title ?? '';
