@@ -86,10 +86,11 @@ class TempTriviaController extends Controller
 
         // 正式に保存
         $trivium = new Trivium();
-        $trivium->title = $tempTrivium->title;
-        $trivium->summary = $tempTrivium->summary;
-        $trivium->detail = $tempTrivium->detail;
-        $msg = "{$trivium->title}を保存しました";
+        $trivium->title = $request->title;
+        $trivium->summary = $request->summary;
+        $trivium->detail = $request->detail;
+        $trivium->save();
+        $msg = "「{$trivium->title}」を作成完了";
         return redirect()->route('home')->with('flash_succeed_message', $msg);
     }
 }
