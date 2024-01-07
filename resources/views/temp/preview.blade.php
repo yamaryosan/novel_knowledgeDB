@@ -13,6 +13,7 @@
     <body>
         <main>
             @component('components.temp_preview_form')
+            @slot('id', $id)
             @slot('title', $title)
             @slot('summary', $summary)
             @slot('detail', $detail)

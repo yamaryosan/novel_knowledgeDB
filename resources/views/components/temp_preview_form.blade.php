@@ -1,6 +1,6 @@
 <!-- 一時保存項目プレビューフォーム -->
 
-<form action="{{ route('temp_migrate') }}" class="submit_form" method="POST">
+<form action="{{ route('temp_migrate', ['id' => $id]) }}" class="submit_form" method="POST">
     @csrf
     <div class="title_container">
         <p>タイトル</p>

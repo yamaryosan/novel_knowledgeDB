@@ -48,5 +48,5 @@ Route::get('/temp/edit/{id}', [TempTriviaController::class, 'edit'])->name('temp
 Route::post('/temp/store', [TempTriviaController::class, 'store'])->name('temp_store');
 Route::post('/temp/update/{id}', [TempTriviaController::class, 'update'])->name('temp_update');
 Route::get('/temp/delete/{id}', [TempTriviaController::class, 'delete'])->name('temp_delete');
-Route::post('/temp/preview', [TempTriviaController::class, 'preview'])->name('temp_preview');
-Route::post('/temp/migrate', [TempTriviaController::class, 'migrate'])->name('temp_migrate');
+Route::post('/temp/preview/{id}', [TempTriviaController::class, 'preview'])->name('temp_preview');
+Route::post('/temp/migrate/{id}', [TempTriviaController::class, 'migrate'])->name('temp_migrate');
