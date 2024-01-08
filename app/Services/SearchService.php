@@ -58,7 +58,7 @@ class SearchService
         }
     }
 
-    public function searchByTitle(): LengthAwarePaginator
+    private function searchByTitle(): LengthAwarePaginator
     {
         $trivia = Trivium::where('title', 'like', '%'.$this->keyword.'%')
         ->paginate(5)
@@ -67,7 +67,7 @@ class SearchService
         return $trivia->isEmpty() ? $this->emptyTrivium : $trivia;
     }
 
-    public function searchByDetail(): LengthAwarePaginator
+    private function searchByDetail(): LengthAwarePaginator
     {
         $trivia = Trivium::where('detail', 'like', '%'.$this->keyword.'%')
         ->paginate(5)
@@ -75,7 +75,7 @@ class SearchService
         return $trivia->isEmpty() ? $this->emptyTrivium : $trivia;
     }
 
-    public function searchByBoth(): LengthAwarePaginator
+    private function searchByBoth(): LengthAwarePaginator
     {
         $trivia = Trivium::where('title', 'like', '%'.$this->keyword.'%')
             ->orWhere('detail', 'like', '%'.$this->keyword.'%')
