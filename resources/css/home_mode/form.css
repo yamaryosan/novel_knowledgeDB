@@ -1,0 +1,50 @@
+@media (min-width: 600px) {
+    form {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    form div {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    form p {
+        font-size: 1.5rem;
+        align-self: flex-start;
+        margin-left: 10%;
+    }
+
+    form>* {
+        width: 100%;
+    }
+
+    form>div>*:not(p) {
+        width: 80%;
+        margin-top: 10px;
+        margin-bottom: 10px;
+        border: 2px solid #ccc;
+        border-radius: 3px;
+    }
+
+    form input[type='text'] {
+        width: 80%;
+        height: 100px;
+        font-size: 2.5vw;
+    }
+
+    form textarea {
+        width: 80%;
+        height: 100px;
+        font-size: max(2vw, 1.2rem);
+        overflow-y: hidden;
+    }
+}
+
+@media (max-width: 600px) {
+    form {
+        display: none;
+    }
+}
