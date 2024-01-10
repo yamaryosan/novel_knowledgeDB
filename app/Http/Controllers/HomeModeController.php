@@ -128,12 +128,20 @@ class HomeModeController extends Controller
     // 編集ページ
     public function edit($id)
     {
+        // プレビューからの入力値を取得
+        $title = old('title');
+        $summary = old('summary');
+        $detail = old('detail');
+
         // IDを元に項目を取得
         $trivium = Trivium::findOrFail($id);
 
         // 編集ページに渡す
         return view('home_mode.edit', [
             'trivium' => $trivium,
+            'title' => $title,
+            'summary' => $summary,
+            'detail' => $detail,
         ]);
     }
 
