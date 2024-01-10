@@ -6,7 +6,8 @@
         @vite([
             'resources/css/app.css',
             'resources/css/home_mode/home_mode.css',
-            'resources/css/home_mode/edit_form.css',
+            'resources/css/home_mode/form.css',
+            'resources/css/home_mode/button.css',
             'resources/js/home_mode/edit_form.js',
             'resources/js/home_mode/exit_prevention.js'
             ])
