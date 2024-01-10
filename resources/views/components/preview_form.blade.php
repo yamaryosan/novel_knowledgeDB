@@ -2,7 +2,7 @@
 
 @if ( $mode === 'create')
     <!-- 新規作成時 -->
-    <form action="{{ route('store') }}" class="submit_form" method="POST">
+    <form class="submit_form" method="POST" data-back-route="{{ route('back') }}" data-store-route="{{ route('store') }}">
         @csrf
         <div class="title_container">
             <p>タイトル</p>
@@ -16,12 +16,21 @@
             <p>詳細</p>
             <textarea name="detail" class="detail_input" cols="20" rows="5" readonly>{{ $detail }}</textarea>
         </div>
-        <input type="button" onclick="history.back()" value="戻る" class="back_btn">
-        <input type="submit" value="投稿" class="submit_btn">
+        <input type="hidden" name="mode" value="create">
+        @component('components.button')
+        @slot('name', 'back')
+        @slot('image', 'return')
+        @slot('color', 'red')
+        @endcomponent
+        @component('components.button')
+        @slot('name', 'submit')
+        @slot('image', 'plus')
+        @slot('color', 'blue')
+        @endcomponent
     </form>
 @elseif ($mode === 'edit')
     <!-- 編集時 -->
-    <form action="{{ route('update', ['id'=>$id]) }}" class="submit_form" method="POST">
+    <form class="submit_form" method="POST" data-back-route="{{ route('back') }}" data-update-route="{{ route('update', ['id'=>$id]) }}">
         @csrf
         <div class="title_container">
             <p>タイトル</p>
@@ -35,8 +44,19 @@
             <p>詳細</p>
             <textarea name="detail" class="detail_input" cols="20" rows="5" readonly>{{ $detail }}</textarea>
         </div>
-        <input type="button" onclick="history.back()" value="戻る" class="back_btn">
-        <input type="submit" value="更新" class="submit_btn">
+        <input type="hidden" name="mode" value="edit">
+        <input type="hidden" name="id" value="{{ $id }}">
+        @component('components.button')
+        @slot('name', 'back')
+        @slot('image', 'return')
+        @slot('color', 'red')
+        @slot('onclick', '')
+        @endcomponent
+        @component('components.button')
+        @slot('name', 'submit')
+        @slot('image', 'update')
+        @slot('color', 'blue')
+        @endcomponent
     </form>
 @endif
 
