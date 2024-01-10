@@ -15,6 +15,9 @@
     <body>
         <main>
             @component('components.create_form')
+                @slot('title', $title)
+                @slot('summary', $summary)
+                @slot('detail', $detail)
             @endcomponent
         </main>
     </body>
