@@ -1,99 +1,13 @@
 @media (min-width: 600px) {
-    .submit_form {
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-    }
-
-    .submit_form * {
+    form * {
         cursor: not-allowed;
     }
 
-    .submit_form .title_container {
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        margin-bottom: 10px;
-        width: 80%;
-        & p {
-            font-size: 1.5rem;
-        }
-        & input {
-            height: 100px;
-            margin-top: 10px;
-            margin-bottom: 10px;
-            font-size: max(2.5vw, 1.5rem);
-            border: 2px solid #ccc;
-            border-radius: 3px;
-            background-color: #999;
-        }
-    }
-    .submit_form {
-        .summary_container,
-        .detail_container {
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            margin-bottom: 10px;
-            width: 80%;
-            & p {
-                font-size: 1.5rem;
-            }
-            & textarea {
-                margin-top: 10px;
-                margin-bottom: 10px;
-                font-size: max(2vw, 1.2rem);
-                overflow-y: hidden;
-                background-color: #999;
-            }
-        }
+    form input {
+        background-color: #999;
     }
 
-    .submit_form .submit_btn {
-        width: 80%;
-        height: 100px;
-        margin-top: 10px;
-        margin-bottom: 10px;
-        font-size: 2.5vw;
-        background-color: #ade8e6;
-        box-shadow: 0 6px #999;
-        border-radius: 3px;
-        cursor: pointer;
-        &:hover {
-            background-color: #65d9d7;
-        }
-        &:active {
-            background-color: #65d9d7;
-            box-shadow: none;
-            position: relative;
-            top: 6px;
-        }
-    }
-    .submit_form .back_btn {
-        width: 80%;
-        height: 100px;
-        margin-top: 10px;
-        margin-bottom: 10px;
-        font-size: 2.5vw;
-        background-color: #e8adad;
-        box-shadow: 0 6px #999;
-        border-radius: 3px;
-        cursor: pointer;
-        &:hover {
-            background-color: #d96565;
-        }
-        &:active {
-            background-color: #d96565;
-            box-shadow: none;
-            position: relative;
-            top: 6px;
-        }
-    }
-}
-
-@media (max-width: 600px) {
-    .submit_form {
-        display: none;
+    form textarea {
+        background-color: #999;
     }
 }
