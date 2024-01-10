@@ -18,12 +18,30 @@
     }
 }
 
+.red {
+    background-color: #ffb2b2;
+    &:hover {
+        background-color: #ff6666;
+    }
+    &:active {
+        background-color: #ff6666;
+    }
+}
+
 .plus {
     background-image: url("../../images/plus.png");
 }
 
 .paper_and_pen {
     background-image: url("../../images/paper_and_pen.png");
+}
+
+.back {
+    background-image: url("../../images/back.png");
+}
+
+.update {
+    background-image: url("../../images/update.png");
 }
 
 input[type='button'] {
