@@ -31,7 +31,7 @@
 @endcomponent
 
 @component('components.button')
-    @slot('name', 'create')
+    @slot('name', 'right_fixed')
     @slot('image', 'paper_and_pen')
     @slot('color', 'green')
     @slot('link', route('temp'))
