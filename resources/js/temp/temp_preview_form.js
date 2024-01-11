@@ -9,7 +9,7 @@ activateInput('title_container');
 activateTextarea('summary_container');
 activateTextarea('detail_container');
 
-const saveRoute = document.querySelector('.submit_form').dataset.saveRoute;
+const backRoute = document.querySelector('.submit_form').dataset.backRoute;
 const submitRoute = document.querySelector('.submit_form').dataset.submitRoute;
-buttonRoute('submit_form', 'save_btn', saveRoute, false);
-buttonRoute('submit_form', 'submit_btn', submitRoute, true);
+buttonRoute('submit_form', 'back', backRoute, false);
+buttonRoute('submit_form', 'submit', submitRoute, true);
