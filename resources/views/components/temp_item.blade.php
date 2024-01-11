@@ -2,7 +2,11 @@
     <a href="{{ route('temp_edit', ['id' => $trivium->id]) }}" class="trivium_link">
         <div class="trivium_unit">
             <div class="item_title">
-                <h3>{{ $trivium->title }}</h3>
+                @if ($trivium->title === '')
+                    <h3>タイトルなし</h3>
+                @else
+                    <h3>{{ $trivium->title }}</h3>
+                @endif
             </div>
             <div class="item_summary">
                 @if ($trivium->summary === 'EMPTY')
