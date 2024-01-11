@@ -8,9 +8,12 @@
 
 @endcomponent
 
-<div class="link_btn_container">
-    <a href="{{ route('create') }}" class="link_btn">新規追加</a>
-</div>
+@component('components.button')
+    @slot('name', 'create')
+    @slot('image', 'plus')
+    @slot('color', 'blue')
+    @slot('link', route('create'))
+@endcomponent
 
 @component('components.random')
 
@@ -27,12 +30,18 @@
 
 @endcomponent
 
-@component('components.temp_save_button')
-
+@component('components.button')
+    @slot('name', 'create')
+    @slot('image', 'paper_and_pen')
+    @slot('color', 'green')
+    @slot('link', route('temp'))
 @endcomponent
 
-@component('components.all_delete_button')
-
+@component('components.button')
+    @slot('name', 'all_delete')
+    @slot('image', 'trashbox')
+    @slot('color', 'red')
+    @slot('link', route('all_delete'))
 @endcomponent
 
 @component('components.error_message')

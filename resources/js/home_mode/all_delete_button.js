@@ -1,4 +1,4 @@
-const allDeleteButton = document.querySelector('.all_delete_btn');
+const allDeleteButton = document.querySelector('.all_delete');
 
 allDeleteButton.addEventListener('click', (event)=> {
     const link = allDeleteButton.getAttribute('href');

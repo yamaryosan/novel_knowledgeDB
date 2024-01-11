@@ -6,7 +6,8 @@
         @vite([
             'resources/css/app.css',
             'resources/css/home_mode/home_mode.css',
-            'resources/css/home_mode/edit_form.css',
+            'resources/css/home_mode/form.css',
+            'resources/css/home_mode/button.css',
             'resources/js/home_mode/edit_form.js',
             'resources/js/home_mode/exit_prevention.js'
             ])
@@ -15,9 +16,9 @@
         <main>
             @component('components.edit_form')
                 @slot('id', $trivium->id)
-                @slot('title', $trivium->title)
-                @slot('summary', $trivium->summary)
-                @slot('detail', $trivium->detail)
+                @slot('title', @isset($title) ? $title : $trivium->title)
+                @slot('summary', @isset($summary) ? $summary : $trivium->summary)
+                @slot('detail', @isset($detail) ? $detail : $trivium->detail)
             @endcomponent
         </main>
     </body>

@@ -1,0 +1,72 @@
+.blue {
+    background-color: #ade8e6;
+    &:hover {
+        background-color: #65d9d7;
+    }
+    &:active {
+        background-color: #65d9d7;
+    }
+}
+
+.green {
+    background-color: #b3ffb3;
+    &:hover {
+        background-color: #8cff8c;
+    }
+    &:active {
+        background-color: #8cff8c;
+    }
+}
+
+.red {
+    background-color: #ffb2b2;
+    &:hover {
+        background-color: #ff6666;
+    }
+    &:active {
+        background-color: #ff6666;
+    }
+}
+
+.plus {
+    background-image: url("../../images/plus.png");
+}
+
+.paper_and_pen {
+    background-image: url("../../images/paper_and_pen.png");
+}
+
+.return {
+    background-image: url("../../images/return.png");
+}
+
+.update {
+    background-image: url("../../images/update.png");
+}
+
+.trashbox {
+    background-image: url("../../images/trashbox.png");
+}
+
+input[type='button'] {
+    width: 60%;
+    height: 100px;
+    display: block;
+    margin: 10% auto;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    font-size: 2.5vw;
+    box-shadow: 0 6px #999;
+    border-radius: 3px;
+    background-repeat: no-repeat;
+    background-size: 70px 70px;
+    background-position: 50% 50%;
+    &:hover {
+        cursor: pointer;
+    }
+    &:active {
+        box-shadow: none;
+        position: relative;
+        top: 6px;
+    }
+}

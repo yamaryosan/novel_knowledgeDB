@@ -42,8 +42,13 @@ class TempTriviaController extends Controller
     // 編集用フォーム
     public function edit($id)
     {
+        // プレビューからの入力値を取得
+        $title = old('title');
+        $summary = old('summary');
+        $detail = old('detail');
+
         $tempTrivium = TempTrivium::findOrFail($id);
-        return view('temp.edit', compact('tempTrivium'));
+        return view('temp.edit', compact('tempTrivium', 'title', 'summary', 'detail'));
     }
 
     // 編集内容の保存
@@ -81,6 +86,13 @@ class TempTriviaController extends Controller
         $summary = $request->summary ?? '';
         $detail = $request->detail ?? '';
         return view('temp.preview', compact('id', 'title', 'summary', 'detail'));
+    }
+
+    // プレビューから戻る
+    public function back(Request $request)
+    {
+        $id = $request->id;
+        return redirect()->route('temp_edit', ['id' => $id])->withInput();
     }
 
     // 一時保存項目を正式に保存

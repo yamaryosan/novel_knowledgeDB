@@ -18,8 +18,16 @@
         <p>詳細</p>
         <textarea name="detail" class="detail_input" cols="20" rows="5" required>{{ $detail }}</textarea>
     </div>
-    <input type="button" class="save_btn" value="再保存">
-    <input type="button" class="submit_btn" value="作成">
+    @component('components.button')
+    @slot('name', 'save_btn')
+    @slot('image', 'paper_and_pen')
+    @slot('color', 'green')
+    @endcomponent
+    @component('components.button')
+    @slot('name', 'submit_btn')
+    @slot('image', 'plus')
+    @slot('color', 'blue')
+    @endcomponent
 </form>
 
 <!-- スマホ用エラーメッセージ -->

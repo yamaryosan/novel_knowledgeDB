@@ -7,9 +7,12 @@
 function buttonRoute(formClassName, btnClassName, route, isValidate) {
     const form = document.querySelector(`.${formClassName}`);
     const btn = document.querySelector(`.${btnClassName}`);
+    if (!form) {
+        console.trace('buttonRoute: form is null');
+    }
 
-    if (!form || !btn) {
-        console.trace('buttonRoute: form or btn is null');
+    if (!btn) {
+        console.trace('buttonRoute: btn is null');
     }
 
     if (!route) {

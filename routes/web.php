@@ -43,6 +43,7 @@ Route::get('/edit/{id}', [HomeModeController::class, 'edit'])->name('edit');
 Route::post('/update/{id}', [HomeModeController::class, 'update'])->name('update');
 Route::get('/delete/{id}', [HomeModeController::class, 'delete'])->name('delete');
 Route::post('/preview/{id?}', [HomeModeController::class, 'preview'])->name('preview');
+Route::post('/back', [HomeModeController::class, 'back'])->name('back');
 Route::get('/all_delete', [HomeModeController::class, 'all_delete'])->name('all_delete');
 Route::get('/temp', [TempTriviaController::class, 'index'])->name('temp');
 Route::get('/temp/edit/{id}', [TempTriviaController::class, 'edit'])->name('temp_edit');
@@ -50,4 +51,5 @@ Route::post('/temp/store', [TempTriviaController::class, 'store'])->name('temp_s
 Route::post('/temp/update/{id}', [TempTriviaController::class, 'update'])->name('temp_update');
 Route::get('/temp/delete/{id}', [TempTriviaController::class, 'delete'])->name('temp_delete');
 Route::post('/temp/preview/{id}', [TempTriviaController::class, 'preview'])->name('temp_preview');
+Route::post('/temp/back', [TempTriviaController::class, 'back'])->name('temp_back');
 Route::post('/temp/migrate/{id}', [TempTriviaController::class, 'migrate'])->name('temp_migrate');

@@ -102,7 +102,11 @@ class HomeModeController extends Controller
     // 新規作成ページ
     public function create()
     {
-        return view('home_mode.create');
+        // プレビューからの入力値を取得
+        $title = old('title');
+        $summary = old('summary');
+        $detail = old('detail');
+        return view('home_mode.create', compact('title', 'summary', 'detail'));
     }
 
     // 新規作成
@@ -124,12 +128,20 @@ class HomeModeController extends Controller
     // 編集ページ
     public function edit($id)
     {
+        // プレビューからの入力値を取得
+        $title = old('title');
+        $summary = old('summary');
+        $detail = old('detail');
+
         // IDを元に項目を取得
         $trivium = Trivium::findOrFail($id);
 
         // 編集ページに渡す
         return view('home_mode.edit', [
             'trivium' => $trivium,
+            'title' => $title,
+            'summary' => $summary,
+            'detail' => $detail,
         ]);
     }
 
@@ -147,7 +159,22 @@ class HomeModeController extends Controller
         // DBに保存
         $trivium->save();
 
+        $msg = "「{$trivium->title}」を更新完了";
+
         // トップページにリダイレクト
+        return redirect()->route('home')->with('flash_succeed_message', $msg);
+    }
+
+    // プレビューから戻る
+    public function back(Request $request)
+    {
+        $mode = $request->mode;
+        if ($mode === 'create') {
+            return redirect()->route('create')->withInput();
+        } else {
+            $id = $request->id;
+            return redirect()->route('edit', ['id' => $id])->withInput();
+        }
         return redirect()->route('home');
     }
 
