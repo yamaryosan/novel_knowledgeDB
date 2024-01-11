@@ -12,6 +12,7 @@
             'resources/css/home_mode/pagination.css',
             'resources/css/home_mode/previous_page_link.css',
             'resources/css/home_mode/import_succeed.css',
+            'resources/css/home_mode/button.css',
             'resources/js/home_mode/article_item.js',
             'resources/js/home_mode/import_succeed_message_hide.js',
             ])
@@ -19,6 +20,15 @@
 
     <body>
         <main>
+            @if(count($tempTrivia) === 0)
+                <p>一時保存中の項目はありません。</p>
+                @component('components.button')
+                    @slot('name', 'top')
+                    @slot('image', 'return')
+                    @slot('color', 'red')
+                    @slot('link', 'home')
+                @endcomponent
+            @endif
             @foreach($tempTrivia as $trivium)
                 @component('components.temp_item', ['trivium' => $trivium, 'previousPageUrl' => $previousPageUrl])
                 @endcomponent
