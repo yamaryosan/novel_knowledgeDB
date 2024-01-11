@@ -88,6 +88,13 @@ class TempTriviaController extends Controller
         return view('temp.preview', compact('id', 'title', 'summary', 'detail'));
     }
 
+    // プレビューから戻る
+    public function back(Request $request)
+    {
+        $id = $request->id;
+        return redirect()->route('temp_edit', ['id' => $id])->withInput();
+    }
+
     // 一時保存項目を正式に保存
     public function migrate(Request $request)
     {
