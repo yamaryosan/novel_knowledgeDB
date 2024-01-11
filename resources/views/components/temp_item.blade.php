@@ -9,7 +9,7 @@
                 @endif
             </div>
             <div class="item_summary">
-                @if ($trivium->summary === 'EMPTY')
+                @if ($trivium->summary === '')
                     <p>{{ Str::limit($trivium->detail, 100) }}</p>
                 @else
                     <p>{{ Str::limit($trivium->summary, 300) }}</p>
