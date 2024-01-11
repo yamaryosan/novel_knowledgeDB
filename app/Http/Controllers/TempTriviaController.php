@@ -31,7 +31,7 @@ class TempTriviaController extends Controller
             $trivium->delete();
         }
         $tempTrivium = new TempTrivium();
-        $tempTrivium->title = $request->title ?? '';
+        $tempTrivium->title = $request->title ?? 'タイトルなし';
         $tempTrivium->summary = $request->summary ?? '';
         $tempTrivium->detail = $request->detail ?? '';
         $msg = "「{$tempTrivium->title}」を保存完了";
