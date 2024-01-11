@@ -44,6 +44,10 @@
     background-image: url("../../images/update.png");
 }
 
+.trashbox {
+    background-image: url("../../images/trashbox.png");
+}
+
 input[type='button'] {
     width: 80%;
     height: 100px;
