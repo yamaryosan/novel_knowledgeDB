@@ -1,6 +1,6 @@
 <!-- 一時保存項目プレビューフォーム -->
 
-<form action="{{ route('temp_migrate', ['id' => $id]) }}" class="submit_form" method="POST">
+<form class="submit_form" method="POST"  data-back-route="{{ route('temp_back') }}" data-submit-route="{{ route('temp_migrate', ['id' => $id]) }}">
     @csrf
     <div class="title_container">
         <p>タイトル</p>
@@ -14,8 +14,17 @@
         <p>詳細</p>
         <textarea name="detail" class="detail_input" cols="20" rows="5" readonly>{{ $detail }}</textarea>
     </div>
-    <input type="button" onclick="history.back()" value="戻る" class="back_btn">
-    <input type="submit" value="投稿" class="submit_btn">
+    <input type="hidden" name="id" value="{{ $id }}">
+    @component('components.button')
+    @slot('name', 'back')
+    @slot('image', 'return')
+    @slot('color', 'red')
+    @endcomponent
+    @component('components.button')
+    @slot('name', 'submit')
+    @slot('image', 'plus')
+    @slot('color', 'blue')
+    @endcomponent
 </form>
 
 <!-- スマホ用エラーメッセージ -->
