@@ -41,7 +41,8 @@
     @slot('name', 'all_delete')
     @slot('image', 'trashbox')
     @slot('color', 'red')
-    @slot('link', route('all_delete'))
+    @slot('data_name', 'all-delete')
+    @slot('data_value', route('all_delete'))
 @endcomponent
 
 @component('components.error_message')
