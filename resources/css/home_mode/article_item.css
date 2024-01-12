@@ -2,8 +2,14 @@
     position: relative;
 }
 
+.trivium_link h3 {
+    font-size: 1.2rem;
+    font-weight: bold;
+    margin-top: 10px;
+}
+
 .trivium_link {
-    text-decoration: none;
+    text-decoration: none !important;
     color: #434343;
 }
 
@@ -36,7 +42,7 @@
 .item_summary,
 .item_footer {
     padding-left: 30px;
-    padding-right: 30px;
+    padding-right: 60px;
 }
 
 .edit_btn {
