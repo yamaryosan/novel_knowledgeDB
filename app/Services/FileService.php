@@ -26,6 +26,11 @@ class FileService
                 return false;
             }
 
+            // ファイルサイズを判定
+            if (!$this->isProperSize($file)) {
+                return false;
+            }
+
             // ファイルをアップロード
             Storage::putFileAs($this->path, $file, $filename);
         }
@@ -40,6 +45,20 @@ class FileService
 
         // 拡張子がtxtでなければエラー
         if ($extension != 'txt') {
+            return false;
+        }
+
+        return true;
+    }
+
+    // 適切なサイズのファイルかどうかを判定
+    public function isProperSize($file): bool
+    {
+        // ファイルサイズを取得
+        $size = $file->getSize();
+
+        // 20MB以上ならエラー
+        if ($size >= 20000000) {
             return false;
         }
 
