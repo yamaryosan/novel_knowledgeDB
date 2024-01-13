@@ -38,6 +38,13 @@
 @endcomponent
 
 @component('components.button')
+    @slot('name', 'right_fixed')
+    @slot('image', 'trashbox')
+    @slot('color', 'red')
+    @slot('link', route('soft_delete_index'))
+@endcomponent
+
+@component('components.button')
     @slot('name', 'all_delete')
     @slot('image', 'trashbox')
     @slot('color', 'red')
