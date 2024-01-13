@@ -48,6 +48,10 @@
     background-image: url("../../images/trashbox.png");
 }
 
+.upload {
+    background-image: url("../../images/upload.png");
+}
+
 input[type='button'] {
     width: 60%;
     height: 100px;
