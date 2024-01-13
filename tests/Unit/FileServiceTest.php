@@ -37,6 +37,19 @@ class FileServiceTest extends TestCase
         Storage::disk('local')->assertMissing($path . '/' . $file->getClientOriginalName());
     }
 
+    public function testUploadTooLargeFile()
+    {
+        // 10MB以上のファイルを作成
+        $file = UploadedFile::fake()->create('test.txt', 10000);
+        $path = 'uploads';
+        $fileService = new FileService($path);
+
+        $result = $fileService->upload([$file]);
+
+        $this->assertFalse($result);
+        Storage::disk('local')->assertMissing($path . '/' . $file->getClientOriginalName());
+    }
+
     public function testReadOldTypeFile()
     {
         $content = "Title 1……Detail 1\r\nTitle 2……Detail 2";
