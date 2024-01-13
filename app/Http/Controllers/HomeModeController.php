@@ -199,7 +199,7 @@ class HomeModeController extends Controller
         $fileService = new FileService('import');
         // テキストファイル以外はエラーを表示
         if (!$fileService->upload($files)) {
-            return redirect()->route('home')->with('flash_error_message', '.txtファイルを選択してください');
+            return redirect()->route('home')->with('flash_error_message', '20MB未満の.txtファイルのみ可');
         }
         // 項目の取得
         $trivia = $fileService->read();
