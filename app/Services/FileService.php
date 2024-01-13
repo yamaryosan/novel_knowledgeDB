@@ -57,8 +57,8 @@ class FileService
         // ファイルサイズを取得
         $size = $file->getSize();
 
-        // 10MB以上ならエラー
-        if ($size > 10000000) {
+        // 20MB以上ならエラー
+        if ($size >= 20000000) {
             return false;
         }
 

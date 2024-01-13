@@ -39,8 +39,8 @@ class FileServiceTest extends TestCase
 
     public function testUploadTooLargeFile()
     {
-        // 10MB以上のファイルを作成
-        $file = UploadedFile::fake()->create('test.txt', 10000);
+        // 20MB以上のファイルを作成
+        $file = UploadedFile::fake()->create('test.txt', 20000);
         $path = 'uploads';
         $fileService = new FileService($path);
 
