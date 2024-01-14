@@ -9,6 +9,8 @@ use App\Models\Trivium;
 use App\Services\FileService;
 use App\Services\SearchService;
 
+use App\Jobs\WriteTriviaToFileJob;
+
 class HomeModeController extends Controller
 {
     public function index()
@@ -196,7 +198,7 @@ class HomeModeController extends Controller
         if (empty($files)) {
             return redirect()->route('home')->with('flash_error_message', 'ファイルを選択してください');
         }
-        $fileService = new FileService('import');
+        $fileService = new FileService('public/import/');
         // テキストファイル以外はエラーを表示
         if (!$fileService->upload($files)) {
             return redirect()->route('home')->with('flash_error_message', '20MB未満の.txtファイルのみ可');
@@ -214,5 +216,34 @@ class HomeModeController extends Controller
         }
 
         return redirect()->route('home')->with('flash_succeed_message', 'インポート完了!');
+    }
+
+    // エクスポートされたファイル一覧
+    public function exported_files()
+    {
+        // ファイル一覧を取得
+        $fileService = new FileService('public/export/');
+        $fileArray = $fileService->getFiles();
+
+        return view('home_mode.exported_files', [
+            'files' => $fileArray,
+        ]);
+    }
+    // エクスポート
+    public function export()
+    {
+        // ジョブをディスパッチ
+        dispatch(new WriteTriviaToFileJob());
+        return redirect()->route('exported_files')->with('flash_succeed_message', 'エクスポート開始');
+    }
+
+    // エクスポートされたファイルの削除
+    public function export_delete($filename)
+    {
+        // ファイルを削除
+        $fileService = new FileService('public/export/');
+        $fileService->delete($filename);
+
+        return redirect()->route('exported_files')->with('flash_succeed_message', '削除完了');
     }
 }
