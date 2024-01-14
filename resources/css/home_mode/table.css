@@ -1,0 +1,52 @@
+table {
+    margin: auto;
+    border-collapse: collapse;
+    border: 1px solid #ccc;
+    width: 90%;
+    font-size: clamp(0.8rem, 1.5vw, 1rem);
+    font-family: monospace;
+    text-align: left;
+    background-color: #ccc;
+    margin-bottom : 1rem;
+}
+
+table a {
+    text-decoration: none;
+    color: #000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+table tr:nth-child(even) {
+    background-color: #fff;
+}
+
+tr {
+    padding: 0.5rem;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+
+td {
+    padding: 0.5rem;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+
+img {
+    width: 2rem;
+    height: 2rem;
+    background-color: transparent;
+    transition: 0.2s;
+    &:hover {
+        transform: scale(1.2);
+    }
+    &:active {
+        transform: scale(1.4);
+    }
+}
