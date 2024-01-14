@@ -26,8 +26,11 @@
 
 @endcomponent
 
-@component('components.export')
-
+@component('components.button')
+    @slot('name', 'export')
+    @slot('image', 'download')
+    @slot('color', 'green')
+    @slot('link', route('exported_files'))
 @endcomponent
 
 @component('components.button')
