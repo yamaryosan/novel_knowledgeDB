@@ -4,6 +4,8 @@ declare(strict_types=1);
 
 namespace App\Services;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Collection;
+use App\Models\Trivium;
 
 class FileService
 {
@@ -87,9 +89,12 @@ class FileService
     }
 
     // ファイルを削除
-    private function delete($file): void
+    public function delete($file): void
     {
-        Storage::delete($file);
+        if (!Storage::exists($this->path . $file)) {
+            dd('ファイルが存在しません', $this->path . $file);
+        }
+        Storage::delete($this->path . $file);
     }
 
     // 旧タイプの項目のファイルかどうかを判定
@@ -150,5 +155,55 @@ class FileService
     {
         $trivia = array_merge(...$trivia);
         return $trivia;
+    }
+
+    // エクスポート
+    public function export(Collection $trivia): string
+    {
+        // ファイル名を取得
+        $filename = date('Ymd_Hi') . '.txt';
+        // ファイルパスを取得
+        $path = $this->path . $filename;
+
+        // ファイルを作成
+        Storage::put($path, '');
+
+        // 項目をファイルに書き込み
+        foreach ($trivia as $trivium) {
+        // ファイルを開く
+            $file = Storage::append($path, '');
+            // 項目を書き込み
+            Storage::append($path, '【タイトル】'.$trivium->title.'');
+            Storage::append($path, '【総論】'.$trivium->summary.'');
+            Storage::append($path, '【本文】'.$trivium->detail.'');
+        }
+        return $filename;
+    }
+
+    // エクスポートされたファイル一覧を取得
+    public function getFiles(): array
+    {
+        // ファイル一覧を取得
+        $files = Storage::files($this->path);
+        if (empty($files)) {
+            return [];
+        }
+        // ファイル名、アップロード日時、項目数を取得
+        foreach ($files as $file) {
+            $filename = basename($file);
+            $uploaded_at = date('Y-m-d H:i:s', Storage::lastModified($file));
+            $article_count = $this->article_count($file);
+            $fileArray[] = ['filename' => $filename, 'uploaded_at' => $uploaded_at, 'article_count' => $article_count];
+        }
+        return $fileArray;
+    }
+
+    // 項目数を取得
+    public function article_count($file): int
+    {
+        $article = Storage::get($file);
+        $article = explode('【タイトル】', $article);
+        $count = count($article) - 1;
+        return $count;
     }
 }

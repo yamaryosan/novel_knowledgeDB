@@ -36,7 +36,9 @@ Route::get('/home', [HomeModeController::class, 'index'])->name('home');
 Route::post('/search', [HomeModeController::class, 'post'])->name('search');
 Route::get('/search', [HomeModeController::class, 'result'])->name('result');
 Route::post('/import', [HomeModeController::class, 'import'])->name('import');
-Route::post('/export', [HomeModeController::class, 'export'])->name('export');
+Route::get('/exported_files', [HomeModeController::class, 'exported_files'])->name('exported_files');
+Route::get('/export', [HomeModeController::class, 'export'])->name('export');
+Route::get('/export/delete/{filename}', [HomeModeController::class, 'export_delete'])->name('export_delete');
 Route::get('/create', [HomeModeController::class, 'create'])->name('create');
 Route::post('/store', [HomeModeController::class, 'store'])->name('store');
 Route::get('/show/{id}', [HomeModeController::class, 'show'])->name('show');
@@ -58,3 +60,8 @@ Route::get('/soft_delete/store/{id}', [SoftDeleteController::class, 'soft_delete
 Route::get('/soft_delete/preview/{id}', [SoftDeleteController::class, 'preview'])->name('soft_delete_preview');
 Route::post('/soft_delete/restore/{id}', [SoftDeleteController::class, 'restore'])->name('soft_delete_restore');
 Route::get('/delete/{id}', [SoftDeleteController::class, 'delete'])->name('delete');
+
+// 進捗状況
+Route::get('/progress', function () {
+    return response()->json(Cache::get('progress', 0));
+});
