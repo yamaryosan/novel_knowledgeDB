@@ -52,6 +52,10 @@
     background-image: url("../../images/upload.png");
 }
 
+.download {
+    background-image: url("../../images/download.png");
+}
+
 input[type='button']:not(.right_fixed) {
     width: 60%;
     height: 100px;
