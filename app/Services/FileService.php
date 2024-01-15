@@ -127,13 +127,32 @@ class FileService
     // 新タイプの項目を読み込む
     private function readNewType(string $content): array
     {
-        // 正規表現を使用して各セクションを抽出
-        preg_match("/【タイトル】\n(.+)\n\n【総論】\n(.+)\n\n【本文】\n(.+)/", $content, $matches);
-        $title = $matches[1];
-        $summary = $matches[2];
-        $detail = $matches[3];
-        $trivia[] = ['title' => $title, 'summary' => $summary, 'detail' => $detail];
+        $trivia = [];
+        // 正規表現を使用して各セクションを抽出し、配列に格納
+        $pattern = '/(【タイトル】.*?【総論】.*?【本文】.*?)(?=【タイトル】|$)/s';
+        preg_match_all($pattern, $content, $matches);
+        // 項目ごとに分割し、タイトルと詳細を取得
+        foreach ($matches[0] as $unit_content) {
+            // タイトルの文字列を取得
+            preg_match('/【タイトル】(.*?)【総論】/s', $unit_content, $match);
+            $title = $match[1];
+            $title = $this->removeNewline($title);
+            // 総論の文字列を取得
+            preg_match('/【総論】(.*?)【本文】/s', $unit_content, $match);
+            $summary = $match[1];
+            // 本文の文字列を取得
+            preg_match('/【本文】(.*)/s', $unit_content, $match);
+            $detail = $match[1];
+            $trivia[] = ['title' => $title, 'summary' => $summary, 'detail' => $detail];
+        }
         return $trivia;
+    }
+
+    // 改行コードを文字列から削除
+    private function removeNewline(string $content): string
+    {
+        $no_new_line_content = preg_replace("/\n|\r\n|\r/", '', $content);
+        return $no_new_line_content;
     }
 
     // 改行コードでファイルの内容を分割
