@@ -199,7 +199,7 @@ class HomeModeController extends Controller
             return redirect()->route('home')->with('flash_error_message', 'ファイルを選択してください');
         }
         $fileService = new FileService('public/import/');
-        // テキストファイル以外はエラーを表示
+        // 20MB以上のテキストファイルでなければエラーを表示
         if (!$fileService->upload($files)) {
             return redirect()->route('home')->with('flash_error_message', '20MB未満の.txtファイルのみ可');
         }
