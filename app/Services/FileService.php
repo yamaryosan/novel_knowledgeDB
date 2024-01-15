@@ -91,10 +91,10 @@ class FileService
     // ファイルを削除
     public function delete($file): void
     {
-        if (!Storage::exists($this->path . $file)) {
-            dd('ファイルが存在しません', $this->path . $file);
+        if (!Storage::exists($file)) {
+            dd('ファイルが存在しません', $file);
         }
-        Storage::delete($this->path . $file);
+        Storage::delete($file);
     }
 
     // 旧タイプの項目のファイルかどうかを判定
