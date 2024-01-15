@@ -108,18 +108,22 @@ class FileService
     }
 
     // 旧タイプの項目を読み込む
-    private function readOldType(string $wholeContent): array
+    private function readOldType(string $content): array
     {
-        // 3点リーダーで文字列を分割
-        $contentArray = $this->splitByNewline($wholeContent);
         $trivia = [];
-        // 項目ごとに分割し、タイトルと詳細を取得
-        foreach ($contentArray as $content){
-            $trivium = $this->splitByDoubleEllipsis($content);
-            $title = $trivium[0];
-            $summary = '';
-            $detail = $trivium[1];
-            $trivia[] = ['title' => $title, 'summary' => $summary, 'detail' => $detail];
+        // 正規表現を使用して三点リーダーと改行でタイトルと本文を分割
+        $pattern = '/(.*?)……(.*?)(?=(\n|\r\n|\r)|$)/s';
+        preg_match_all($pattern, $content, $matches);
+        // 項目ごとに分割
+        foreach ($matches[0] as $unit_content) {
+            // タイトルの文字列を取得
+            preg_match('/(.*?)……/s', $unit_content, $match);
+            $title = $match[1];
+            $title = $this->removeNewline($title);
+            // 本文の文字列を取得
+            preg_match('/……(.*)/s', $unit_content, $match);
+            $detail = $match[1];
+            $trivia[] = ['title' => $title, 'summary' => '', 'detail' => $detail];
         }
         return $trivia;
     }
@@ -131,7 +135,7 @@ class FileService
         // 正規表現を使用して各セクションを抽出し、配列に格納
         $pattern = '/(【タイトル】.*?【総論】.*?【本文】.*?)(?=【タイトル】|$)/s';
         preg_match_all($pattern, $content, $matches);
-        // 項目ごとに分割し、タイトルと詳細を取得
+        // 項目ごとに分割
         foreach ($matches[0] as $unit_content) {
             // タイトルの文字列を取得
             preg_match('/【タイトル】(.*?)【総論】/s', $unit_content, $match);
@@ -153,20 +157,6 @@ class FileService
     {
         $no_new_line_content = preg_replace("/\n|\r\n|\r/", '', $content);
         return $no_new_line_content;
-    }
-
-    // 改行コードでファイルの内容を分割
-    private function splitByNewline(string $content): array
-    {
-        $content = explode("\r\n", $content);
-        return $content;
-    }
-
-    // 3点リーダー2つで文字列を分割
-    private function splitByDoubleEllipsis(string $content): array
-    {
-        $content = explode('……', $content);
-        return $content;
     }
 
     // 2次元配列の項目を1次元に変換
