@@ -87,3 +87,49 @@ function updateProgress() {
     }
 }
 
+// ボタンを無効化
+function disableButton (button) {
+    button.disabled = true;
+    button.style.backgroundColor = '#ccc';
+    button.style.boxShadow = 'none';
+    button.style.top = '0';
+    button.style.cursor = 'not-allowed';
+}
+
+// ボタンを有効化
+function enableButton (button) {
+    button.disabled = false;
+    button.style.backgroundColor = '#ade8e6';
+    button.style.boxShadow = '0 0 10px #999';
+    button.style.top = '6px';
+    button.style.cursor = 'pointer';
+}
+
+// テーブル行を無効化
+function disableRow (row) {
+    row.style.backgroundColor = '#666';
+    row.style.color = '#fff';
+    row.style.fontWeight = 'bold';
+    row.style.textShadow = 'none';
+}
+
+// テーブル行を有効化
+function enableRow (row) {
+    row.style.backgroundColor = '#fff';
+    row.style.color = '#666';
+    row.style.fontWeight = 'normal';
+}
+
+// テーブル最終行のa要素を無効化
+function disableLastRowButton (lastButton) {
+    lastButton.style.color = '#fff';
+    lastButton.style.textShadow = 'none';
+    lastButton.style.pointerEvents = 'none';
+}
+
+// テーブル最終行のa要素を有効化
+function enableLastRowButton (lastButton) {
+    lastButton.style.color = '#666';
+    lastButton.style.cursor = 'pointer';
+    lastButton.style.pointerEvents = 'auto';
+}
