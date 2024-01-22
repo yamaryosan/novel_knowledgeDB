@@ -167,29 +167,6 @@ class FileService
         return $trivia;
     }
 
-    // エクスポート
-    public function export(Collection $trivia): string
-    {
-        // ファイル名を取得
-        $filename = date('Ymd_Hi') . '.txt';
-        // ファイルパスを取得
-        $filePath = $this->dir_path . $filename;
-
-        // ファイルを作成
-        Storage::put($filePath, '');
-
-        // 項目をファイルに書き込み
-        foreach ($trivia as $trivium) {
-        // ファイルを開く
-            $file = Storage::append($filePath, '');
-            // 項目を書き込み
-            Storage::append($filePath, '【タイトル】'.$trivium->title.'');
-            Storage::append($filePath, '【総論】'.$trivium->summary.'');
-            Storage::append($filePath, '【本文】'.$trivium->detail.'');
-        }
-        return $filename;
-    }
-
     // エクスポートされたファイル一覧を取得
     public function getFiles(): array
     {
