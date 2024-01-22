@@ -10,8 +10,10 @@
             'resources/css/home_mode/table.css',
             'resources/css/home_mode/progress.css',
             'resources/css/home_mode/import_succeed.css',
+            'resources/css/home_mode/error_message.css',
             'resources/css/home_mode/previous_page_link.css',
             'resources/js/home_mode/import_succeed_message_hide.js',
+            'resources/js/home_mode/error_message_hide.js',
             'resources/js/home_mode/export.js',
             ])
     </head>
@@ -30,6 +32,10 @@
             <progress id="progressBar" max="100" value="0"></progress>
             @component('components.previous_page_link')
             @slot('previousPageUrl', route('home'))
+            @endcomponent
+
+            @component('components.error_message')
+
             @endcomponent
 
             @component('components.import_succeed')
