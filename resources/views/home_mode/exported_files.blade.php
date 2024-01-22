@@ -33,6 +33,14 @@
             @component('components.previous_page_link')
             @slot('previousPageUrl', route('home'))
             @endcomponent
+
+            @component('components.error_message')
+
+            @endcomponent
+
+            @component('components.import_succeed')
+
+            @endcomponent
         </main>
     </body>
 </html>
