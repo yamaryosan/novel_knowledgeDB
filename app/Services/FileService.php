@@ -9,11 +9,11 @@ use App\Models\Trivium;
 
 class FileService
 {
-    protected string $path = "";
+    protected string $dir_path = "";
 
-    public function __construct(string $path)
+    public function __construct(string $dir_path)
     {
-        $this->path = $path;
+        $this->dir_path = $dir_path;
     }
 
     // アップロード
@@ -34,7 +34,7 @@ class FileService
             }
 
             // ファイルをアップロード
-            Storage::putFileAs($this->path, $file, $filename);
+            Storage::putFileAs($this->dir_path, $file, $filename);
         }
         return true;
     }
@@ -71,7 +71,7 @@ class FileService
     public function read(): array
     {
         // ファイルを読み込み、配列に格納
-        $files = Storage::files($this->path);
+        $files = Storage::files($this->dir_path);
         $trivia = [];
         foreach ($files as $file) {
             $wholeContent = Storage::get($file);
@@ -91,6 +91,7 @@ class FileService
     // ファイルを削除
     public function delete($file): void
     {
+        $file = $this->dir_path . $file;
         if (!Storage::exists($file)) {
             dd('ファイルが存在しません', $file);
         }
@@ -172,19 +173,19 @@ class FileService
         // ファイル名を取得
         $filename = date('Ymd_Hi') . '.txt';
         // ファイルパスを取得
-        $path = $this->path . $filename;
+        $filePath = $this->dir_path . $filename;
 
         // ファイルを作成
-        Storage::put($path, '');
+        Storage::put($filePath, '');
 
         // 項目をファイルに書き込み
         foreach ($trivia as $trivium) {
         // ファイルを開く
-            $file = Storage::append($path, '');
+            $file = Storage::append($filePath, '');
             // 項目を書き込み
-            Storage::append($path, '【タイトル】'.$trivium->title.'');
-            Storage::append($path, '【総論】'.$trivium->summary.'');
-            Storage::append($path, '【本文】'.$trivium->detail.'');
+            Storage::append($filePath, '【タイトル】'.$trivium->title.'');
+            Storage::append($filePath, '【総論】'.$trivium->summary.'');
+            Storage::append($filePath, '【本文】'.$trivium->detail.'');
         }
         return $filename;
     }
@@ -193,7 +194,7 @@ class FileService
     public function getFiles(): array
     {
         // ファイル一覧を取得
-        $files = Storage::files($this->path);
+        $files = Storage::files($this->dir_path);
         if (empty($files)) {
             return [];
         }
