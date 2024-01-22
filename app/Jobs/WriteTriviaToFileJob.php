@@ -37,7 +37,8 @@ class WriteTriviaToFileJob implements ShouldQueue
         $filename = date('YmdHis') . '.txt';
         // ファイルパスを取得
         $path = 'public/export/' . $filename;
-        // ファイルに書き込む
+
+        // 項目を取得
         $trivia = Trivium::all();
         $total = count($trivia);
         $count = 0;
@@ -46,15 +47,17 @@ class WriteTriviaToFileJob implements ShouldQueue
             Cache::forget("exporting:{$this->token}");
         }
 
+        // ひとつの文字列にまとめる
         $all_sentence = '';
         foreach ($trivia as $trivium) {
-            $all_sentence = '【タイトル】' . $trivium->title . PHP_EOL . '【総論】' . $trivium->summary . PHP_EOL . '【本文】' . $trivium->detail . PHP_EOL;
-            Storage::append($path, '【タイトル】' . $all_sentence);
+            $all_sentence .= '【タイトル】' . $trivium->title . PHP_EOL . '【総論】' . $trivium->summary . PHP_EOL . '【本文】' . $trivium->detail . PHP_EOL;
             $count++;
             // 進捗を表示
             $progress = round($count / $total * 100);
             Cache::put('progress', $progress, 1800);
         }
+        // ファイルに書き込む
+        Storage::append($path, $all_sentence);
         // ジョブが完了したらトークンをキャッシュから削除
         Cache::forget("exporting:{$this->token}");
     }
