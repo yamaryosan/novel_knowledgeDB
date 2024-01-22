@@ -26,8 +26,6 @@ setInterval(updateProgress, 1000);
 function updateProgress() {
     const exportButton = document.querySelector('.export');
     const progressBar = document.getElementById('progressBar');
-    const lastRow = document.querySelectorAll('table tbody tr:last-child')[0];
-    const lastButtons = document.querySelectorAll('table tbody tr:last-child a');
 
     // 進捗を取得
     fetch('/progress')
@@ -41,12 +39,10 @@ function updateProgress() {
             // 進捗を取得
             const progress = data;
             console.log(progress);
-            // 進捗が0%でも100%でもない場合はプログレスバーを表示し、ボタンとテーブル行を無効化
+            // 進捗が0%でも100%でもない場合はプログレスバーを表示し、ボタンを無効化
             if (progress > 0 && progress < 100) {
                 progressBar.style.display = 'block';
                 disableButton(exportButton);
-                disableRow(lastRow);
-                disableLastRowButton(lastButtons);
             }
             // プログレスバーの更新 (プログレスバーはprogress要素で実装)
             progressBar.value = progress;
@@ -76,37 +72,4 @@ function enableButton (button) {
     button.style.boxShadow = '0 0 10px #999';
     button.style.top = '6px';
     button.style.cursor = 'pointer';
-}
-
-// テーブル行を無効化
-function disableRow (row) {
-    row.style.backgroundColor = '#666';
-    row.style.color = '#fff';
-    row.style.fontWeight = 'bold';
-    row.style.textShadow = 'none';
-}
-
-// テーブル行を有効化
-function enableRow (row) {
-    row.style.backgroundColor = '#fff';
-    row.style.color = '#666';
-    row.style.fontWeight = 'normal';
-}
-
-// テーブル最終行のa要素を無効化
-function disableLastRowButton (lastButtons) {
-    lastButtons.forEach(lastButton => {
-        lastButton.style.color = '#fff';
-        lastButton.style.textShadow = 'none';
-        lastButton.style.pointerEvents = 'none';
-    });
-}
-
-// テーブル最終行のa要素を有効化
-function enableLastRowButton (lastButtons) {
-    lastButtons.forEach(lastButton => {
-        lastButton.style.color = '#fff';
-        lastButton.style.textShadow = 'none';
-        lastButton.style.pointerEvents = 'none';
-    });
 }
