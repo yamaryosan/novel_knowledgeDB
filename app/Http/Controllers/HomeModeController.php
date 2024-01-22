@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Cache;
 
 use App\Models\Trivium;
 
@@ -229,11 +230,19 @@ class HomeModeController extends Controller
             'files' => $fileArray,
         ]);
     }
+
     // エクスポート
-    public function export()
+    public function export(Request $request)
     {
+        // エクスポートが重複しないよう、トークンを生成
+        $exporting_token = $request->session()->token();
+
+        if (Cache::add("exporting:{$exporting_token}", true, 1800) === false) {
+            Cache::forget("exporting:{$exporting_token}");
+            return redirect()->route('exported_files')->with('flash_error_message', 'エクスポート中です');
+        }
         // ジョブをディスパッチ
-        dispatch(new WriteTriviaToFileJob());
+        dispatch(new WriteTriviaToFileJob($exporting_token));
         return redirect()->route('exported_files')->with('flash_succeed_message', 'エクスポート開始');
     }
 
