@@ -1,5 +1,12 @@
 @extends('layouts.app')
 
+@section('sidebar')
+@parent
+
+@component('components_pseudo.sidebar')
+@endcomponent
+@endsection
+
 @section('content')
 
 <h2>自己紹介</h2>

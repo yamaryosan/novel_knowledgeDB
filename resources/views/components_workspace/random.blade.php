@@ -4,7 +4,7 @@
             <p>記事がありません。</p>
         @else
             @foreach ($randomTrivia as $trivium)
-                @component('components.article_item')
+                @component('components_workspace.article_item')
                     @slot('trivium', $trivium)
                 @endcomponent
             @endforeach

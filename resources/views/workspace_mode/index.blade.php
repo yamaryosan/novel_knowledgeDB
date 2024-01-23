@@ -1,10 +1,17 @@
 @extends('layouts.app')
 
+@section('sidebar')
+@parent
+
+@component('components_workspace.sidebar')
+@endcomponent
+@endsection
+
 @section('content')
 
-<h2>秘密</h2>
+@component('components_workspace.random')
 
-<p>ダミー用のトップページだよ</p>
-<a href="{{ route('session') }}">セッション</a>
+@endcomponent
+
 
 @endsection
