@@ -11,6 +11,7 @@
             'resources/css/content.css',
             'resources/css/sidebar.css',
             'resources/css/workspace_mode/article_item.css',
+            'resources/css/workspace_mode/show_item.css',
             'resources/css/home_mode/pagination.css',
             ])
     </head>
