@@ -1,13 +1,21 @@
 <header>
-    <h1>
-        <a href="{{ route('top') }}">タイトル(仮)</a>
-    </h1>
+    <a href="{{ route('top') }}">
+        <h1>タイトル(仮)</h1>
+    </a>
     <nav>
         <ul>
-            <li><a href="{{ route('top') }}">ホーム</a></li>
-            <li><a href="{{ route('recommend') }}">おすすめの記事</a></li>
-            <li><a href="{{ route('new_article') }}">新着記事</a></li>
-            <li><a href="{{ route('category') }}">カテゴリー</a></li>
+            <a href="{{ route('top') }}">
+                <li>ホーム</li>
+            </a>
+            <a href="{{ route('recommend') }}">
+                <li>おすすめの記事</li>
+            </a>
+            <a href="{{ route('new_article') }}">
+                <li>新着記事</li>
+            </a>
+            <a href="{{ route('category') }}">
+                <li>カテゴリー</li>
+            </a>
         </ul>
     </nav>
 </header>
