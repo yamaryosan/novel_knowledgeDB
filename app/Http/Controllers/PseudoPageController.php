@@ -38,7 +38,7 @@ class PseudoPageController extends Controller
             return redirect()->route('index');
         } else {
             // 正しくない場合は、偽ランディングページを表示
-            return view('pseudo_page.index');
+            return redirect()->route('top');
         }
     }
 }
