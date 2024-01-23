@@ -31,7 +31,7 @@ class HomeModeController extends Controller
         $keyword = $request->input('keyword');
 
         // 検索結果ページにリダイレクト
-        return redirect()->route('home.result');
+        return redirect()->route('result');
     }
 
     // 検索結果ページ
