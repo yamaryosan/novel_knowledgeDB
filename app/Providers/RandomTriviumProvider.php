@@ -20,8 +20,15 @@ class RandomTriviumProvider extends ServiceProvider
      */
     public function boot(): void
     {
+        // 自宅閲覧モードのランダム表示
         View::composer(
             'components.random',
+            'App\Http\Composers\RandomTriviumComposer'
+        );
+
+        // 職場閲覧モードのランダム表示
+        View::composer(
+            'components_workspace.random',
             'App\Http\Composers\RandomTriviumComposer'
         );
     }
