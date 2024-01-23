@@ -1,0 +1,46 @@
+.trivium_link h3 {
+    font-size: 1rem;
+    font-weight: bold;
+    margin-top: 10px;
+    margin-left: 15px;
+    margin-right: 50px;
+}
+
+.trivium_link p {
+    font-size: 0.8rem;
+    margin-left: 15px;
+    margin-bottom: 10px;
+    margin-right: 50px;
+}
+
+.trivium_link {
+    text-decoration: none !important;
+    color: #434343;
+}
+
+.trivium_unit {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 100%;
+    margin-bottom: 20px;
+    border-radius: 10px;
+    transition: 0.2s;
+    &:hover {
+        background-color: #ade8e6;
+        cursor: pointer;
+    }
+    &:active {
+        background-color: #65d9d7;
+        box-shadow: 0 0 #ccc;
+    }
+}
+
+@media (max-width: 600px) {
+    .trivium_unit h3 {
+        margin-right: 15px;
+    }
+    .trivium_unit p {
+        margin-right: 15px;
+    }
+}
