@@ -29,6 +29,8 @@ Route::post('/secret', [PseudoPageController::class, 'post'])->name('secret');
 
 // 職場閲覧モード
 Route::get('/index', [WorkspaceModeController::class, 'index'])->name('index');
+Route::post('/w_search', [WorkspaceModeController::class, 'post'])->name('workspace_search');
+Route::get('/w_search', [WorkspaceModeController::class, 'result'])->name('workspace_result');
 Route::get('/session', [WorkspaceModeController::class, 'session'])->name('session');
 
 // 自宅閲覧モード
