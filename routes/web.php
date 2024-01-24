@@ -32,7 +32,8 @@ Route::get('/index', [WorkspaceModeController::class, 'index'])->name('index');
 Route::post('/w_search', [WorkspaceModeController::class, 'post'])->name('workspace_search');
 Route::get('/w_search', [WorkspaceModeController::class, 'result'])->name('workspace_result');
 Route::get('/w_show/{id}', [WorkspaceModeController::class, 'show'])->name('workspace_show');
-
+Route::get('/w_show_d/{id}', [WorkspaceModeController::class, 'dummy_show'])->name('workspace_dummy_show');
+Route::get('/w_delete_d', [WorkspaceModeController::class, 'dummy_delete'])->name('workspace_dummy_delete');
 // 自宅閲覧モード
 Route::get('/home', [HomeModeController::class, 'index'])->name('home');
 Route::post('/search', [HomeModeController::class, 'post'])->name('search');
