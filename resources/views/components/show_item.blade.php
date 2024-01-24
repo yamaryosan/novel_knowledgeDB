@@ -4,11 +4,11 @@
     </div>
     <div class="item_summary">
         <h3>総論</h3>
-        <p>{{ $trivium->summary }}</p>
+        <p>{!! nl2br(e($trivium->summary)) !!}</p>
     </div>
     <div class="item_detail">
         <h3>詳細</h3>
-        <p>{{ $trivium->detail }}</p>
+        <p>{!! nl2br(e($trivium->detail)) !!}</p>
     </div>
     <div class="item_footer">
         <p>{{ $trivium->updated_at }}</p>
