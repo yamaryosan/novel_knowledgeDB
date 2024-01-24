@@ -5,8 +5,10 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 
 use App\Services\SearchService;
+use App\Services\MergeService;
 
 use App\Models\Trivium;
+use App\Models\DummyArticle;
 
 class WorkspaceModeController extends Controller
 {
@@ -52,11 +54,15 @@ class WorkspaceModeController extends Controller
             return redirect()->route('index');
         }
 
+        // ダミー記事を10件取得
+        $dummy_articles = DummyArticle::orderBy('id', 'desc')->take(10)->get();
+
         // 検索キーワードをビューに渡す
         return view('workspace_mode.result', [
             'keyword' => $keyword,
             'target' => $target,
             'trivia' => $trivia,
+            'dummy_articles' => $dummy_articles,
             'previousPageUrl' => route('home'),
         ]);
     }
@@ -70,6 +76,19 @@ class WorkspaceModeController extends Controller
         // 記事詳細ページを表示
         return view('workspace_mode.show', [
             'trivium' => $trivium,
+            'previousPageUrl' => route('workspace_result'),
+        ]);
+    }
+
+    // ダミー記事詳細ページ
+    public function dummy_show($id)
+    {
+        // ダミー記事を取得
+        $dummy_article = DummyArticle::findOrFail($id);
+
+        // ダミー記事詳細ページを表示
+        return view('workspace_mode.dummy_show', [
+            'trivium' => $dummy_article,
             'previousPageUrl' => route('workspace_result'),
         ]);
     }

@@ -3,10 +3,10 @@
         <h2>{{ $trivium->title }}</h2>
     </div>
     <div class="show_item_summary">
-        <p>{{ $trivium->summary }}</p>
+        <p>{!! nl2br(e($trivium->summary)) !!}</p>
     </div>
     <div class="show_item_detail">
-        <p>{{ $trivium->detail }}</p>
+        <p>{!! nl2br(e($trivium->detail)) !!}</p>
     </div>
     <button onclick="history.back()" class="back_btn">戻る</button>
 </div>
