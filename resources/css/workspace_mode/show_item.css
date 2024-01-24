@@ -1,0 +1,43 @@
+.show_trivium_unit {
+    margin-bottom: 1em;
+    padding: 1em;
+}
+
+.show_item_title {
+    border-left: 10px solid #93e8e6;
+    border-bottom: 1px solid #93e8e6;
+    padding: 0.5em;
+    background-color: #e5eded;
+}
+
+.show_item_title>h2 {
+    font-size: 1.5rem;
+    font-weight: 500;
+}
+
+.show_item_summary {
+    margin-bottom: 0.5em;
+}
+
+.show_item_detail {
+    margin-bottom: 0.5em;
+}
+
+.show_trivium_unit>button {
+    display: block;
+    width: 5rem;
+    height: 5rem;
+    text-indent: -9999px;
+    border-radius: 50%;
+    overflow-y: hidden;
+    background-image: url("../../images/return.png");
+    background-repeat: no-repeat;
+    background-size: 50%;
+    background-position: 50% 50%;
+    border: none;
+    box-shadow: 0 0 10px #999;
+    margin: 0 1rem 0 auto;
+    &:hover {
+        background-color: #e5eded;
+    }
+}

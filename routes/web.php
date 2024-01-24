@@ -31,7 +31,7 @@ Route::post('/secret', [PseudoPageController::class, 'post'])->name('secret');
 Route::get('/index', [WorkspaceModeController::class, 'index'])->name('index');
 Route::post('/w_search', [WorkspaceModeController::class, 'post'])->name('workspace_search');
 Route::get('/w_search', [WorkspaceModeController::class, 'result'])->name('workspace_result');
-Route::get('/session', [WorkspaceModeController::class, 'session'])->name('session');
+Route::get('/w_show/{id}', [WorkspaceModeController::class, 'show'])->name('workspace_show');
 
 // 自宅閲覧モード
 Route::get('/home', [HomeModeController::class, 'index'])->name('home');

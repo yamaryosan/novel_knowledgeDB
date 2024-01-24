@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 
 use App\Services\SearchService;
 
+use App\Models\Trivium;
+
 class WorkspaceModeController extends Controller
 {
     // ランディングページを表示
@@ -56,6 +58,19 @@ class WorkspaceModeController extends Controller
             'target' => $target,
             'trivia' => $trivia,
             'previousPageUrl' => route('home'),
+        ]);
+    }
+
+    // 記事詳細ページ
+    public function show($id)
+    {
+        // 記事を取得
+        $trivium = Trivium::findOrFail($id);
+
+        // 記事詳細ページを表示
+        return view('workspace_mode.show', [
+            'trivium' => $trivium,
+            'previousPageUrl' => route('workspace_result'),
         ]);
     }
 }
