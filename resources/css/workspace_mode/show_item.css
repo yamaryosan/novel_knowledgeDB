@@ -25,7 +25,17 @@
 
 .show_trivium_unit>button {
     display: block;
-    padding: 0.5em;
+    width: 5rem;
+    height: 5rem;
+    text-indent: -9999px;
+    border-radius: 50%;
+    overflow-y: hidden;
+    background-image: url("../../images/return.png");
+    background-repeat: no-repeat;
+    background-size: 50%;
+    background-position: 50% 50%;
+    border: none;
+    box-shadow: 0 0 10px #999;
     margin: 0 1rem 0 auto;
     &:hover {
         background-color: #e5eded;
