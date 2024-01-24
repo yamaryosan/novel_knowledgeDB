@@ -8,4 +8,5 @@
     <div class="show_item_detail">
         <p>{{ $trivium->detail }}</p>
     </div>
+    <button onclick="history.back()" class="back_btn">戻る</button>
 </div>
