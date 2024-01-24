@@ -12,6 +12,7 @@ class SearchService
 {
     protected string $keyword = "";
     protected string $target = "";
+    private int $maxPaginate = 50;
 
     public function __construct(string $keyword, string $target)
     {
@@ -42,7 +43,7 @@ class SearchService
         $this->emptyTrivium = new LengthAwarePaginator(
             $this->emptyTrivium,
             $this->emptyTrivium->count(),
-            5,
+            $this->maxPaginate,
             1
         );
     }
@@ -61,7 +62,7 @@ class SearchService
     private function searchByTitle(): LengthAwarePaginator
     {
         $trivia = Trivium::where('title', 'like', '%'.$this->keyword.'%')
-        ->paginate(5)
+        ->paginate($this->maxPaginate)
         ->appends(['target' => $this->target, 'keyword' => $this->keyword]);
         // 結果が空の場合はダミーの配列を返す
         return $trivia->isEmpty() ? $this->emptyTrivium : $trivia;
@@ -70,7 +71,7 @@ class SearchService
     private function searchByDetail(): LengthAwarePaginator
     {
         $trivia = Trivium::where('detail', 'like', '%'.$this->keyword.'%')
-        ->paginate(5)
+        ->paginate($this->maxPaginate)
         ->appends(['target' => $this->target, 'keyword' => $this->keyword]);
         return $trivia->isEmpty() ? $this->emptyTrivium : $trivia;
     }
@@ -79,7 +80,7 @@ class SearchService
     {
         $trivia = Trivium::where('title', 'like', '%'.$this->keyword.'%')
             ->orWhere('detail', 'like', '%'.$this->keyword.'%')
-            ->paginate(5)
+            ->paginate($this->maxPaginate)
             ->appends(['target' => $this->target, 'keyword' => $this->keyword]);
         return $trivia->isEmpty() ? $this->emptyTrivium : $trivia;
     }
