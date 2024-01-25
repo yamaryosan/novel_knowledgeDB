@@ -15,6 +15,10 @@ class WorkspaceModeController extends Controller
     // ランディングページを表示
     public function index()
     {
+        // セッションに職場閲覧モードアクセス用フラグがなければ、トップページにリダイレクト
+        if (!session('access_granted')) {
+            return redirect()->route('top');
+        }
         return view('workspace_mode.index');
     }
 
