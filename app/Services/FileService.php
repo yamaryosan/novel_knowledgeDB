@@ -6,6 +6,7 @@ namespace App\Services;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Collection;
 use App\Models\Trivium;
+use App\Models\DummyArticle;
 
 class FileService
 {
@@ -72,6 +73,10 @@ class FileService
     {
         // ファイルを読み込み、配列に格納
         $files = Storage::files($this->dir_path);
+        // ダミー記事のファイルは除外
+        $files = array_filter($files, function ($file) {
+            return !preg_match('/DUMMY_ARTICLE.txt/', $file);
+        });
         $trivia = [];
         foreach ($files as $file) {
             $wholeContent = Storage::get($file);
@@ -86,6 +91,51 @@ class FileService
         // 2次元配列の項目を1次元に変換
         $flattenTrivia = $this->flatten($trivia);
         return $flattenTrivia;
+    }
+
+    // ダミー記事に関するファイルを読み込み、配列に格納
+    public function readDummyArticle(): array
+    {
+        // ファイルを読み込み、配列に格納
+        $dummy_article_file_name = "DUMMY_ARTICLE.txt";
+        $files = Storage::files($this->dir_path);
+
+        // ダミー記事のファイルがなければエラー
+        if (!in_array($this->dir_path . $dummy_article_file_name, $files)) {
+            dd('ダミー記事のファイルがありません');
+        }
+
+        $dummy_article_file = Storage::get($this->dir_path . $dummy_article_file_name);
+
+        // ダミー記事のファイルを削除
+        $this->delete($this->dir_path . $dummy_article_file_name);
+
+        // ダミー記事を読み込み、配列に格納
+        $dummy_article = $this->readNewType($dummy_article_file);
+
+        return $dummy_article;
+    }
+
+    // ダミー記事のファイルかどうかを判定
+    public function isDummyArticleFile($file): bool
+    {
+        // ファイルの拡張子を取得
+        $extension = $file->getClientOriginalExtension();
+
+        // 拡張子がtxtでなければエラー
+        if ($extension != 'txt') {
+            return false;
+        }
+
+        // ファイル名を取得
+        $filename = $file->getClientOriginalName();
+
+        // ファイル名がDUMMY_ARTICLE.txtでなければエラー
+        if ($filename != 'DUMMY_ARTICLE.txt') {
+            return false;
+        }
+
+        return true;
     }
 
     // ファイルを削除
