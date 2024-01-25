@@ -91,7 +91,6 @@ class FileService
     // ファイルを削除
     public function delete($file): void
     {
-        $file = $this->dir_path . $file;
         if (!Storage::exists($file)) {
             dd('ファイルが存在しません', $file);
         }
