@@ -100,9 +100,9 @@ class FileService
         $dummy_article_file_name = "DUMMY_ARTICLE.txt";
         $files = Storage::files($this->dir_path);
 
-        // ダミー記事のファイルがなければエラー
+        // ダミー記事のファイルがなければ何もしない
         if (!in_array($this->dir_path . $dummy_article_file_name, $files)) {
-            dd('ダミー記事のファイルがありません');
+            return [];
         }
 
         $dummy_article_file = Storage::get($this->dir_path . $dummy_article_file_name);
