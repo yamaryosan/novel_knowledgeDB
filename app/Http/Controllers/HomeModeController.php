@@ -9,6 +9,7 @@ use App\Models\Trivium;
 
 use App\Services\FileService;
 use App\Services\SearchService;
+use App\Services\DummyArticleService;
 
 use App\Jobs\WriteTriviaToFileJob;
 
@@ -215,6 +216,11 @@ class HomeModeController extends Controller
             $trivium->detail = $item['detail'];
             $trivium->save();
         }
+
+        // ダミー記事をインポート
+        $dummy_articles = $fileService->readDummyArticle();
+        $dummyArticleService = new DummyArticleService($dummy_articles);
+        $dummyArticleService->save();
 
         return redirect()->route('home')->with('flash_succeed_message', 'インポート完了!');
     }
