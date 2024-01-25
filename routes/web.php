@@ -28,7 +28,7 @@ Route::get('/category', [PseudoPageController::class, 'category'])->name('catego
 Route::post('/secret', [PseudoPageController::class, 'post'])->name('secret');
 
 // 職場閲覧モード
-Route::get('/index', [WorkspaceModeController::class, 'index'])->name('index');
+Route::get('/index', [WorkspaceModeController::class, 'index'])->middleware('access_permission')->name('index');
 Route::post('/w_search', [WorkspaceModeController::class, 'post'])->name('workspace_search');
 Route::get('/w_search', [WorkspaceModeController::class, 'result'])->name('workspace_result');
 Route::get('/w_show/{id}', [WorkspaceModeController::class, 'show'])->name('workspace_show');

@@ -40,6 +40,10 @@ class Kernel extends HttpKernel
             \App\Http\Middleware\CheckNavigationPattern::class,
         ],
 
+        'access_permission' => [
+            \App\Http\Middleware\CheckSecretAccessMiddleware::class,
+        ],
+
         'api' => [
             // \Laravel\Sanctum\Http\Middleware\EnsureFrontendRequestsAreStateful::class,
             \Illuminate\Routing\Middleware\ThrottleRequests::class.':api',
