@@ -35,6 +35,7 @@ class PseudoPageController extends Controller
         $correct_word = 'secret';
         if ($magic_word === $correct_word) {
             // 正しい場合は、秘密の呪文入力後のランディングページを表示
+            session(['access_granted' => true]);
             return redirect()->route('index');
         } else {
             // 正しくない場合は、偽ランディングページを表示
