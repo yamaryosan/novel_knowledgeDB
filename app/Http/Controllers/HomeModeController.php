@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Cache;
 
 use App\Models\Trivium;
+use App\Models\TempTrivium;
+use App\Models\DummyArticle;
 
 use App\Services\FileService;
 use App\Services\SearchService;
@@ -187,6 +189,7 @@ class HomeModeController extends Controller
     {
         // DBのレコードを全削除
         Trivium::truncate();
+        DummyArticle::truncate();
 
         // トップページにリダイレクト
         return redirect()->route('home')->with('flash_succeed_message', '全削除完了');
