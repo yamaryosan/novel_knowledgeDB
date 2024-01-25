@@ -6,9 +6,12 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Cache;
 
 use App\Models\Trivium;
+use App\Models\TempTrivium;
+use App\Models\DummyArticle;
 
 use App\Services\FileService;
 use App\Services\SearchService;
+use App\Services\DummyArticleService;
 
 use App\Jobs\WriteTriviaToFileJob;
 
@@ -186,6 +189,7 @@ class HomeModeController extends Controller
     {
         // DBのレコードを全削除
         Trivium::truncate();
+        DummyArticle::truncate();
 
         // トップページにリダイレクト
         return redirect()->route('home')->with('flash_succeed_message', '全削除完了');
@@ -199,7 +203,7 @@ class HomeModeController extends Controller
         if (empty($files)) {
             return redirect()->route('home')->with('flash_error_message', 'ファイルを選択してください');
         }
-        $fileService = new FileService('');
+        $fileService = new FileService('public/import/');
         // 20MB以上のテキストファイルでなければエラーを表示
         if (!$fileService->upload($files)) {
             return redirect()->route('home')->with('flash_error_message', '20MB未満の.txtファイルのみ可');
@@ -215,6 +219,11 @@ class HomeModeController extends Controller
             $trivium->detail = $item['detail'];
             $trivium->save();
         }
+
+        // ダミー記事をインポート
+        $dummy_articles = $fileService->readDummyArticle();
+        $dummyArticleService = new DummyArticleService($dummy_articles);
+        $dummyArticleService->save();
 
         return redirect()->route('home')->with('flash_succeed_message', 'インポート完了!');
     }

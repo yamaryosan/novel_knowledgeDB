@@ -14,6 +14,9 @@
     @endcomponent
 
     @php
+        if (count($dummy_articles) == 0) {
+            continue;
+        }
         $randomDummyArticle = $dummy_articles->random();
     @endphp
 
