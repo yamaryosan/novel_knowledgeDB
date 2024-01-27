@@ -5,7 +5,7 @@ namespace App\Providers;
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Support\Facades\View;
 
-class RecommendArticleServiceProvider extends ServiceProvider
+class DummyArticleServiceProvider extends ServiceProvider
 {
     /**
      * Register services.
@@ -24,6 +24,12 @@ class RecommendArticleServiceProvider extends ServiceProvider
         View::composer(
             'components_pseudo.recommend_articles',
             'App\Http\Composers\RecommendedArticleComposer'
+        );
+
+        // 新着記事を取得
+        View::composer(
+            'components_pseudo.new_articles',
+            'App\Http\Composers\NewArticleComposer'
         );
     }
 }
