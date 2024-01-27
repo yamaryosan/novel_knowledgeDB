@@ -23,6 +23,7 @@ Route::get('/', [PseudoPageController::class, 'top'])->name('top');
 Route::get('/recommend', [PseudoPageController::class, 'recommend'])->name('recommend');
 Route::get('/new_article', [PseudoPageController::class, 'new_article'])->name('new_article');
 Route::get('/form', [PseudoPageController::class, 'form'])->name('form');
+Route::post('/form_post', [PseudoPageController::class, 'form_post'])->name('form_post');
 
 // 秘密の呪文入力判定
 Route::post('/secret', [PseudoPageController::class, 'post'])->name('secret');
