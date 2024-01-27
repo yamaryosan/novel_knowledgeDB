@@ -13,8 +13,8 @@
             <a href="{{ route('new_article') }}">
                 <li>新着記事</li>
             </a>
-            <a href="{{ route('category') }}">
-                <li>カテゴリー</li>
+            <a href="{{ route('form') }}">
+                <li>お問い合わせ</li>
             </a>
         </ul>
     </nav>
