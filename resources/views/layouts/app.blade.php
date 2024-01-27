@@ -10,6 +10,7 @@
             'resources/css/footer.css',
             'resources/css/content.css',
             'resources/css/sidebar.css',
+            'resources/css/pseudo/form.css',
             'resources/css/home_mode/import_succeed.css',
             'resources/css/workspace_mode/article_item.css',
             'resources/css/workspace_mode/show_item.css',

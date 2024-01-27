@@ -18,16 +18,16 @@
 <form action="{{ route('form_post') }}" method="post">
     @csrf
     <div class="form_item">
-        <label for="name">お名前</label>
+        <p><label for="name">お名前</label></p>
         <input type="text" name="name" id="name" value="{{ old('name') }}" required>
     </div>
     <div class="form_item">
-        <label for="email">メールアドレス</label>
+        <p><label for="email">メールアドレス</label></p>
         <input type="email" name="email" id="email" value="{{ old('email') }}" required>
     </div>
     <div class="form_item">
-        <label for="content">お問い合わせ内容</label>
-        <textarea name="content" id="content" cols="30" rows="10" required>{{ old('content') }}</textarea>
+        <p><label for="content">お問い合わせ内容</label></p>
+        <textarea name="content" id="content" rows="10" required>{{ old('content') }}</textarea>
     </div>
     <input type="submit" value="送信">
 </form>

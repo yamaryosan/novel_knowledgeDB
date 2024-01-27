@@ -1,0 +1,50 @@
+.content > form {
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    justify-content: center;
+    background-color: aliceblue;
+    margin-left: 1rem;
+    border-radius: 2px;
+    padding: 1rem;
+    box-shadow: 0 0 5px 0 rgba(0, 0, 0, 0.2);
+}
+
+.content > form > div {
+    width: 100%;
+    margin-bottom: 1rem;
+}
+
+.content > form input[type="text"]{
+    display: inline-block;
+    width: 100%;
+    margin-bottom: 1rem;
+    font-size: 1.2rem;
+}
+
+.content > form input[type="email"]{
+    display: inline-block;
+    width: 100%;
+    margin-bottom: 1rem;
+    font-size: 1.2rem;
+}
+
+.content > form textarea {
+    width: 100%;
+}
+
+.content > form input[type="submit"]{
+    display: inline-block;
+    width: 100%;
+    margin-bottom: 1rem;
+    font-size: 1.2rem;
+    background-color: #4CAF50;
+    color: white;
+    padding: 0.5rem;
+    border: none;
+    border-radius: 2px;
+    cursor: pointer;
+    &:hover {
+        background-color: #45a049;
+    }
+}
