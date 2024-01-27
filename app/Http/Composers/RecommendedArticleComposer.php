@@ -15,9 +15,7 @@ class RecommendedArticleComposer
         $maxNum = DummyArticle::all()->count();
         // 表示数を最大10個に設定
         $showNum = min($maxNum, 10);
-        for ($i = 0; $i < $showNum; $i++) {
-            $dummyArticles[] = DummyArticle::inRandomOrder()->first();
-        }
+        $dummyArticles = DummyArticle::orderBy('id', 'asc')->take($showNum)->get();
         $view->with('dummy_articles', $dummyArticles);
     }
 }
