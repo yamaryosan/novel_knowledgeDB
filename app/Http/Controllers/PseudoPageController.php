@@ -14,12 +14,12 @@ class PseudoPageController extends Controller
 
     public function recommend()
     {
-        return view('pseudo_page.index');
+        return view('pseudo_page.recommend');
     }
 
     public function new_article()
     {
-        return view('pseudo_page.index');
+        return view('pseudo_page.new_article');
     }
 
     public function category()
