@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Trivium;
+use App\Models\TempTrivium;
 use App\Models\SoftDeleteTrivium;
 
 class SoftDeleteController extends Controller
