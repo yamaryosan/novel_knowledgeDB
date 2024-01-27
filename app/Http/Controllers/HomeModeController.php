@@ -260,7 +260,7 @@ class HomeModeController extends Controller
     {
         // ファイルを削除
         $fileService = new FileService('public/export/');
-        $fileService->delete($filename);
+        $fileService->deleteFile($filename);
 
         return redirect()->route('exported_files')->with('flash_succeed_message', '削除完了');
     }
