@@ -30,10 +30,10 @@ importForm.addEventListener('submit', function(event) {
         }
     }
 
-    // ファイルのサイズが20MBを超えている場合のエラー
+    // ファイルのサイズが既定値を超えている場合のエラー
     for (let i = 0; i < inputElement.files.length; i++) {
         const fileSize = inputElement.files[i].size;
-        if (fileSize > 20000000) {
+        if (fileSize > 50000000) {
 
             dropAreaElement.classList.remove('drop');
             fileIconElement.classList.remove('drop');
@@ -41,7 +41,7 @@ importForm.addEventListener('submit', function(event) {
             dropAreaElement.appendChild(inputElement);
 
             event.preventDefault();
-            alert('20MB未満のファイルのみ可能です');
+            alert('50MB未満のファイルのみ可能です');
             break;
         }
     }

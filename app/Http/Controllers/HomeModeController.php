@@ -204,12 +204,17 @@ class HomeModeController extends Controller
             return redirect()->route('home')->with('flash_error_message', 'ファイルを選択してください');
         }
         $fileService = new FileService('public/import/');
-        // 20MB以上のテキストファイルでなければエラーを表示
+        // 規定値未満のテキストファイルでなければエラーを表示
         if (!$fileService->upload($files)) {
-            return redirect()->route('home')->with('flash_error_message', '20MB未満の.txtファイルのみ可');
+            return redirect()->route('home')->with('flash_error_message', '50MB未満の.txtファイルのみ可');
         }
         // 項目の取得
         $trivia = $fileService->read();
+
+        // 取得に失敗した場合はエラーを表示
+        if (empty($trivia)) {
+            return redirect()->route('home')->with('flash_error_message', 'ファイルの形式を確認してください');
+        }
 
         // 項目をDBに保存
         foreach ($trivia as $item) {
@@ -260,7 +265,7 @@ class HomeModeController extends Controller
     {
         // ファイルを削除
         $fileService = new FileService('public/export/');
-        $fileService->delete($filename);
+        $fileService->deleteFile($filename);
 
         return redirect()->route('exported_files')->with('flash_succeed_message', '削除完了');
     }

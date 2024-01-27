@@ -15,6 +15,7 @@
             'resources/js/home_mode/import_succeed_message_hide.js',
             'resources/js/home_mode/error_message_hide.js',
             'resources/js/home_mode/export.js',
+            'resources/js/home_mode/export_file_delete_alert.js',
             ])
     </head>
     <body>

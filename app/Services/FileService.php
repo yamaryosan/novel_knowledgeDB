@@ -11,6 +11,7 @@ use App\Models\DummyArticle;
 class FileService
 {
     protected string $dir_path = "";
+    protected int $max_file_size = 50000000;
 
     public function __construct(string $dir_path)
     {
@@ -60,8 +61,8 @@ class FileService
         // ファイルサイズを取得
         $size = $file->getSize();
 
-        // 20MB以上ならエラー
-        if ($size >= 20000000) {
+        // 規定MB以上ならエラー
+        if ($size >= $this->max_file_size) {
             return false;
         }
 
@@ -139,7 +140,14 @@ class FileService
     }
 
     // ファイルを削除
-    public function delete($file): void
+    public function deleteFile($filename): void
+    {
+        $file = $this->dir_path . $filename;
+        $this->delete($file);
+    }
+
+    // ファイルを削除
+    private function delete($file): void
     {
         if (!Storage::exists($file)) {
             dd('ファイルが存在しません', $file);
