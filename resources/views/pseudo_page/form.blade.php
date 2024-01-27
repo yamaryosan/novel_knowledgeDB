@@ -32,4 +32,7 @@
     <input type="submit" value="送信">
 </form>
 
+@component('components.import_succeed')
+@endcomponent
+
 @endsection
