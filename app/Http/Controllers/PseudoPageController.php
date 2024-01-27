@@ -19,7 +19,7 @@ class PseudoPageController extends Controller
 
     public function new_article()
     {
-        return view('pseudo_page.index');
+        return view('pseudo_page.new_article');
     }
 
     public function category()
