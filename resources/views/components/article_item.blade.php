@@ -2,8 +2,8 @@
     <a class="trivium_link" href="{{ route('show', ['id' => $trivium->id]) }}">
         <div class="trivium_unit">
             <h3>{{ $trivium->title }}</h3>
-            @if ($trivium->summary === '')
-                <p>{{ Str::limit($trivium->detail, 100) }}</p>
+            @if (empty(trim($trivium->summary)))
+                <p>{{ Str::limit($trivium->detail, 300) }}</p>
             @else
                 <p>{{ Str::limit($trivium->summary, 300) }}</p>
             @endif
