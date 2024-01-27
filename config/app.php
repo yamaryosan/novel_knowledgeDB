@@ -169,7 +169,7 @@ return [
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
         App\Providers\RandomTriviumProvider::class,
-        App\Providers\RecommendArticleServiceProvider::class,
+        App\Providers\DummyArticleServiceProvider::class,
     ])->toArray(),
 
     /*
