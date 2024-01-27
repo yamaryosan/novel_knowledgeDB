@@ -11,6 +11,7 @@ use App\Models\DummyArticle;
 class FileService
 {
     protected string $dir_path = "";
+    protected int $max_file_size = 50000000;
 
     public function __construct(string $dir_path)
     {
@@ -60,8 +61,8 @@ class FileService
         // ファイルサイズを取得
         $size = $file->getSize();
 
-        // 20MB以上ならエラー
-        if ($size >= 20000000) {
+        // 規定MB以上ならエラー
+        if ($size >= $this->max_file_size) {
             return false;
         }
 
