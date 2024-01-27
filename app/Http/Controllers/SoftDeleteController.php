@@ -66,7 +66,7 @@ class SoftDeleteController extends Controller
 
         // DBのレコードを削除
         $tempTrivium = Trivium::findOrFail($id);
-        $msg = "「{$tempTrivium->title}」を完全に削除完了";
+        $msg = "「{$tempTrivium->title}」を一時削除しました";
         $tempTrivium->delete();
 
         // トップページにリダイレクト
