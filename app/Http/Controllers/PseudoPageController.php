@@ -24,7 +24,7 @@ class PseudoPageController extends Controller
 
     public function form()
     {
-        return view('pseudo_page.index');
+        return view('pseudo_page.form');
     }
 
     // 秘密の呪文入力受付
