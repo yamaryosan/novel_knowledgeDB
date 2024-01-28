@@ -24,6 +24,9 @@ Route::get('/recommend', [PseudoPageController::class, 'recommend'])->name('reco
 Route::get('/new_article', [PseudoPageController::class, 'new_article'])->name('new_article');
 Route::get('/form', [PseudoPageController::class, 'form'])->name('form');
 Route::post('/form_post', [PseudoPageController::class, 'form_post'])->name('form_post');
+Route::get('/privacy_policy', function () {
+    return view('pseudo_page.privacy_policy');
+})->name('privacy_policy');
 
 // 秘密の呪文入力判定
 Route::post('/secret', [PseudoPageController::class, 'post'])->name('secret');
