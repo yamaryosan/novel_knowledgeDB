@@ -1,6 +1,6 @@
 <header>
     <a href="{{ route('top') }}">
-        <h1>タイトル(仮)</h1>
+        <h1>日進月報</h1>
     </a>
     <nav>
         <ul>

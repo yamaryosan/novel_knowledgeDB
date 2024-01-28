@@ -3,7 +3,9 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.1/css/bootstrap.min.css">
-        <title>タイトル(仮)</title>
+        @section('title')
+        <title>日進月報</title>
+        @show
         @vite([
             'resources/css/app.css',
             'resources/css/header.css',
