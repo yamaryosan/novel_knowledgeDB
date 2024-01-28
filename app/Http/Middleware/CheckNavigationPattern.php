@@ -9,7 +9,7 @@ use Symfony\Component\HttpFoundation\Response;
 class CheckNavigationPattern
 {
     // 自宅閲覧モードに遷移できる特定のパターン
-    const ROUTE_PATTERN = ["recommend", "recommend", "category"];
+    const ROUTE_PATTERN = ["recommend", "recommend", "form"];
 
     /**
      * Handle an incoming request.
