@@ -1,5 +1,9 @@
 @extends('layouts.app')
 
+@section('title')
+<title>インデックス</title>
+@endsection
+
 @section('sidebar')
 @parent
 
@@ -10,13 +14,13 @@
 @section('content')
 
 <h2>自己紹介</h2>
-<p>私は、大学で情報工学を専攻している学生です。</p>
-<p>趣味は、読書とゲームです。</p>
-<p>読書は、小説や漫画を読むことが多いです。</p>
-<p>ゲームは、主にRPGやアクションゲームをプレイしています。</p>
-<p>最近は、ゲームのプログラミングを勉強しています。</p>
-<p>プログラミング言語は、C++とC#を勉強しています。</p>
-<p>今後は、ゲームのプログラミングをしていきたいと思っています。</p>
-<p>よろしくお願いします。</p>
+<p>はじめまして！saruと申します。</p>
+<p>営業職からITエンジニアを目指して勉強中です。</p>
+<p>HTML, CSS, JS, PHP, Laravel, React等の知識を自分用にまとめていくサイトです。</p>
+<p>少しでも参考になれば幸いです。</p>
+
+<h3>まずは下の記事から</h3>
+@component('components_pseudo.recommend_articles')
+@endcomponent
 
 @endsection

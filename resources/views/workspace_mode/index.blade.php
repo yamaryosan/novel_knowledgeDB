@@ -1,5 +1,9 @@
 @extends('layouts.app')
 
+@section('title')
+<title>インデックス</title>
+@endsection
+
 @section('sidebar')
 @parent
 

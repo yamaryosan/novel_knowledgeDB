@@ -1,5 +1,9 @@
 @extends('layouts.app')
 
+@section('title')
+<title>検索結果</title>
+@endsection
+
 @section('sidebar')
 @parent
 

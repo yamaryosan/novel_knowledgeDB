@@ -1,5 +1,9 @@
 @extends('layouts.app')
 
+@section('title')
+<title>おすすめの記事</title>
+@endsection
+
 @section('sidebar')
 @parent
 

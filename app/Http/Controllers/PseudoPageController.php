@@ -22,9 +22,16 @@ class PseudoPageController extends Controller
         return view('pseudo_page.new_article');
     }
 
-    public function category()
+    public function form()
     {
-        return view('pseudo_page.index');
+        return view('pseudo_page.form');
+    }
+
+    // 偽ランディングページからのフォーム入力受付
+    public function form_post(Request $request)
+    {
+        $msg = 'フォームを受け付けました。';
+        return redirect()->route('form')->with('flash_succeed_message', $msg);
     }
 
     // 秘密の呪文入力受付
