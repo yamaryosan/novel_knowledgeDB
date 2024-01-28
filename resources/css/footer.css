@@ -22,7 +22,7 @@ footer {
 footer ul{
     display: flex;
     flex-direction: column;
-    padding: 0;
+    padding-right: 1rem;
     margin: 0;
     list-style: none;
 }
