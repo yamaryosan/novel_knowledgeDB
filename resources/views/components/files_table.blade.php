@@ -11,7 +11,7 @@
                 <td>{{ $file['uploaded_at'] }}</td>
                 <td>{{ $file['article_count'] }}個</td>
                 <td>
-                    <a href="/storage/export/{{ $file['filename'] }}" download="{{ $file['filename'] }}">
+                    <a href="/storage/public/export/{{ $file['filename'] }}" download="{{ $file['filename'] }}">
                         <img src="{{ asset('images/download.png') }}" alt="download">
                     </a>
                 </td>
