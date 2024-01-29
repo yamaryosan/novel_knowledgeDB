@@ -1,17 +1,22 @@
 import { defineConfig } from 'vite';
 import laravel from 'laravel-vite-plugin';
+import { glob }  from 'glob';
+
+// CSSとJSファイルのリストを動的に生成
+const files = [
+    ...glob.sync('resources/css/**/*.css'),
+    ...glob.sync('resources/js/**/*.js')
+  ];
 
 export default defineConfig({
     plugins: [
         laravel({
-            input: [
-                'resources/css/app.css',
-                'resources/css/header.css',
-                'resources/css/footer.css',
-                'resources/js/app.js',
-                'resources/js/sidebar.js',
-            ],
+            input: files,
             refresh: true,
         }),
     ],
+    server: {
+        host: '0.0.0.0',
+        port: 5173,
+    },
 });
