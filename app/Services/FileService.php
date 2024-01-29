@@ -73,14 +73,14 @@ class FileService
     public function read(): array
     {
         // ファイルを読み込み、配列に格納
-        $files = Storage::files($this->dir_path);
+        $files = Storage::disk(env('FILESYSTEM_DISK'))->files($this->dir_path);
         // ダミー記事のファイルは除外
         $files = array_filter($files, function ($file) {
             return !preg_match('/DUMMY_ARTICLE.txt/', $file);
         });
         $trivia = [];
         foreach ($files as $file) {
-            $wholeContent = Storage::get($file);
+            $wholeContent = Storage::disk(env('FILESYSTEM_DISK'))->get($file);
             if ($this->isOldTypeFile($wholeContent)) {
                 $trivia[] = $this->readOldType($wholeContent);
             } else {
@@ -99,7 +99,7 @@ class FileService
     {
         // ファイルを読み込み、配列に格納
         $dummy_article_file_name = "DUMMY_ARTICLE.txt";
-        $files = Storage::files($this->dir_path);
+        $files = Storage::disk(env('FILESYSTEM_DISK'))->files($this->dir_path);
 
         // ダミー記事のファイルがなければ何もしない
         if (!in_array($this->dir_path . $dummy_article_file_name, $files)) {
@@ -149,10 +149,10 @@ class FileService
     // ファイルを削除
     private function delete($file): void
     {
-        if (!Storage::exists($file)) {
+        if (!Storage::disk(env('FILESYSTEM_DISK'))->exists($file)) {
             dd('ファイルが存在しません', $file);
         }
-        Storage::delete($file);
+        Storage::disk(env('FILESYSTEM_DISK'))->delete($file);
     }
 
     // 旧タイプの項目のファイルかどうかを判定
@@ -228,7 +228,7 @@ class FileService
     public function getFiles(): array
     {
         // ファイル一覧を取得
-        $files = Storage::files($this->dir_path);
+        $files = Storage::disk(env('FILESYSTEM_DISK'))->files($this->dir_path);
         if (empty($files)) {
             return [];
         }
@@ -245,7 +245,7 @@ class FileService
     // 項目数を取得
     public function article_count($file): int
     {
-        $article = Storage::get($file);
+        $article = Storage::disk(env('FILESYSTEM_DISK'))->get($file);
         $article = explode('【タイトル】', $article);
         $count = count($article) - 1;
         return $count;
