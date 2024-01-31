@@ -211,11 +211,15 @@ class HomeModeController extends Controller
         // 項目の取得
         $trivia = $fileService->read();
 
-        // 取得に失敗した場合はエラーを表示
-        if (empty($trivia)) {
+        // ダミー項目用ファイルを読み込む
+        $dummy_articles = $fileService->readDummyArticle();
+        $dummyArticleService = new DummyArticleService($dummy_articles);
+        $dummyArticleService->save();
+
+        // 取得に失敗した場合はエラーを表示(ダミー項目用ファイルだけの場合はエラーを表示しない)
+        if (empty($trivia) && empty($dummy_articles)) {
             return redirect()->route('home')->with('flash_error_message', 'ファイルの形式を確認してください');
         }
-
         // 項目をDBに保存
         foreach ($trivia as $item) {
             $trivium = new Trivium;
@@ -224,12 +228,6 @@ class HomeModeController extends Controller
             $trivium->detail = $item['detail'];
             $trivium->save();
         }
-
-        // ダミー記事をインポート
-        $dummy_articles = $fileService->readDummyArticle();
-        $dummyArticleService = new DummyArticleService($dummy_articles);
-        $dummyArticleService->save();
-
         return redirect()->route('home')->with('flash_succeed_message', 'インポート完了!');
     }
 
