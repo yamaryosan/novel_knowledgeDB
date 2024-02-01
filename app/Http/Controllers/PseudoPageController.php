@@ -39,7 +39,7 @@ class PseudoPageController extends Controller
     {
         // 呪文が正しいかチェック
         $magic_word = $request->input('keyword');
-        $correct_word = 'secret';
+        $correct_word = env('MAGIC_WORD');
         if ($magic_word === $correct_word) {
             // 正しい場合は、秘密の呪文入力後のランディングページを表示
             session(['access_granted' => true]);
