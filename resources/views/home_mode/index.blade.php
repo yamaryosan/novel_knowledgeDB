@@ -59,7 +59,7 @@
 
 @endcomponent
 
-@component('components.import_succeed')
+@component('components.succeed_message')
 
 @endcomponent
 
