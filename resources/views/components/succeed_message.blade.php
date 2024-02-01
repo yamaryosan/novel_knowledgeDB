@@ -1,5 +1,4 @@
-<!-- インポート成功時のメッセージ -->
-
+<!-- 成功時のメッセージ -->
 @if (session('flash_succeed_message'))
     <div class="import_succeed_container">
         <div class="message">
