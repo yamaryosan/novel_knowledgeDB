@@ -8,13 +8,14 @@ function autosizing(className) {
     }
 
     // デフォルトで高さを自動調整
-    textarea.style.height = 'auto';
+    // textarea.style.height = 'auto';
     textarea.style.height = (textarea.scrollHeight) + 'px';
-
+    
     // 入力があったら高さを自動調整
     textarea.addEventListener('input', function() {
-        this.style.height = 'auto';
+        // const currentScroll = document.documentElement.scrollTop;
         this.style.height = (this.scrollHeight) + 'px';
+        // this.scrollTop = currentScroll;
     });
 }
 
